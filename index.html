@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adarsh Sandyal | Business Analyst & Data Scientist</title>
+  <meta name="description" content="Portfolio of Adarsh Sandyal — Business Analyst at Third Wave Coffee, ex-Swiggy Instamart, Data Science & ML learner at Scaler. Expert in SQL, Python, Power BI, and Supply Chain Analytics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ======= NAVIGATION ======= -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">AS<span class="logo-dot">.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta" id="navCta">Hire Me</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======= HERO ======= -->
+  <section id="home" class="hero">
+    <div class="hero-bg">
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+      <canvas id="particleCanvas"></canvas>
+    </div>
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Open to Opportunities · Bengaluru, IN
+        </div>
+        <h1 class="hero-title">
+          Hi, I'm <span class="gradient-text">Adarsh Sandyal</span>
+        </h1>
+        <div class="hero-subtitle-wrapper">
+          <span class="hero-subtitle-static">I'm a </span>
+          <span class="hero-typewriter" id="typewriter"></span>
+          <span class="cursor-blink">|</span>
+        </div>
+        <p class="hero-description">
+          Business Analyst at <strong>Third Wave Coffee</strong>, ex-<strong>Swiggy Instamart</strong> —
+          turning complex supply chain and operational data into decisions that drive real-world impact.
+          Currently levelling up in <strong>Data Science & ML at Scaler</strong>.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary" id="viewWorkBtn">
+            <span>View My Work</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#contact" class="btn btn-outline" id="contactBtn">Get in Touch</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">5+</span>
+            <span class="stat-label">Years in Data</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">5+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">1M+</span>
+            <span class="stat-label">Rows Processed</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="avatar-wrapper">
+          <div class="avatar-ring ring-outer"></div>
+          <div class="avatar-ring ring-inner"></div>
+          <div class="avatar-img-container" id="avatarContainer">
+            <svg class="avatar-svg" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="avatarBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#1a0533"/>
+                  <stop offset="100%" style="stop-color:#0a1628"/>
+                </linearGradient>
+                <linearGradient id="avatarAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#8b5cf6"/>
+                  <stop offset="100%" style="stop-color:#06b6d4"/>
+                </linearGradient>
+                <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#2d1b69"/>
+                  <stop offset="100%" style="stop-color:#0e3a52"/>
+                </linearGradient>
+                <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.3"/>
+                  <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0"/>
+                </radialGradient>
+              </defs>
+              <circle cx="180" cy="180" r="180" fill="url(#avatarBg)"/>
+              <circle cx="180" cy="160" r="140" fill="url(#glowGrad)"/>
+              <g opacity="0.07" stroke="#8b5cf6" stroke-width="1">
+                <line x1="0" y1="90" x2="360" y2="90"/>
+                <line x1="0" y1="180" x2="360" y2="180"/>
+                <line x1="0" y1="270" x2="360" y2="270"/>
+                <line x1="90" y1="0" x2="90" y2="360"/>
+                <line x1="180" y1="0" x2="180" y2="360"/>
+                <line x1="270" y1="0" x2="270" y2="360"/>
+              </g>
+              <ellipse cx="180" cy="310" rx="120" ry="80" fill="url(#bodyGrad)" opacity="0.9"/>
+              <rect x="158" y="222" width="44" height="40" rx="8" fill="#c4956a"/>
+              <ellipse cx="180" cy="195" rx="72" ry="78" fill="#c4956a"/>
+              <ellipse cx="180" cy="140" rx="72" ry="42" fill="#1a0a0a"/>
+              <ellipse cx="130" cy="175" rx="20" ry="30" fill="#1a0a0a"/>
+              <ellipse cx="230" cy="175" rx="20" ry="30" fill="#1a0a0a"/>
+              <ellipse cx="158" cy="195" rx="10" ry="11" fill="white"/>
+              <ellipse cx="202" cy="195" rx="10" ry="11" fill="white"/>
+              <circle cx="160" cy="196" r="6" fill="#1a0a0a"/>
+              <circle cx="204" cy="196" r="6" fill="#1a0a0a"/>
+              <circle cx="162" cy="194" r="2" fill="white"/>
+              <circle cx="206" cy="194" r="2" fill="white"/>
+              <path d="M146 183 Q158 178 170 183" stroke="#1a0a0a" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M190 183 Q202 178 214 183" stroke="#1a0a0a" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M178 205 Q175 218 180 222 Q185 218 182 205" fill="#b5845a" opacity="0.6"/>
+              <path d="M163 232 Q180 244 197 232" stroke="#8b5a40" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <path d="M120 310 L155 262 L180 278 L205 262 L240 310 Z" fill="url(#avatarAccent)" opacity="0.9"/>
+              <ellipse cx="180" cy="330" rx="115" ry="60" fill="url(#bodyGrad)" opacity="0.95"/>
+              <circle cx="180" cy="180" r="176" fill="none" stroke="url(#avatarAccent)" stroke-width="2" opacity="0.25"/>
+            </svg>
+          </div>
+          <div class="avatar-badge badge-top">
+            <span>☕</span> Third Wave Coffee
+          </div>
+          <div class="avatar-badge badge-bottom">
+            <span>🤖</span> ML @ Scaler
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ======= ABOUT ======= -->
+  <section id="about" class="section about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Who I Am</span>
+        <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="about-lead">
+            I'm a Business Analyst who lives at the intersection of data, operations, and strategy — currently driving analytics at <em>Third Wave Coffee</em>.
+          </p>
+          <p>
+            With experience spanning <strong>Swiggy Instamart's supply chain</strong> and retail operations, I've built ETL pipelines, automated dashboards, led inventory optimization, and improved last-mile delivery efficiency for millions of customers. I've worked with 1M+ row datasets and turned raw operational chaos into clean, actionable insight.
+          </p>
+          <p>
+            I'm now deepening my technical edge through a <strong>Data Science & Machine Learning program at Scaler</strong>, adding Python, ML algorithms, and statistical modeling to my toolkit — bridging the gap between business intuition and machine intelligence.
+          </p>
+          <div class="about-highlights">
+            <div class="highlight-card">
+              <div class="highlight-icon">⚡</div>
+              <div>
+                <strong>Impact-Oriented</strong>
+                <p>10% retention boost & 10% fewer data errors at Swiggy Instamart</p>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-icon">🔗</div>
+              <div>
+                <strong>Bridge Builder</strong>
+                <p>I translate field realities into corporate data strategies</p>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-icon">🚀</div>
+              <div>
+                <strong>Continuous Learner</strong>
+                <p>Data Science & ML certification at Scaler (2023–2024)</p>
+              </div>
+            </div>
+          </div>
+          <div class="about-actions">
+            <a href="#contact" class="btn btn-primary" id="aboutContactBtn">Let's Connect</a>
+            <a href="mailto:adarshsandyal@gmail.com" class="btn btn-outline" id="emailBtn">adarshsandyal@gmail.com</a>
+          </div>
+        </div>
+        <div class="about-card-wrap">
+          <div class="about-info-card">
+            <div class="info-row">
+              <span class="info-label">Name</span>
+              <span class="info-value">Adarsh Sandyal</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Current Role</span>
+              <span class="info-value">Business Analyst</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Company</span>
+              <span class="info-value">Third Wave Coffee ☕</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Location</span>
+              <span class="info-value">Bengaluru, India 🇮🇳</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Status</span>
+              <span class="info-value status-open">Open to Opportunities</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Education</span>
+              <span class="info-value">DS & ML @ Scaler</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Languages</span>
+              <span class="info-value">EN · HI · KN · DE</span>
+            </div>
+            <div class="about-social">
+              <a href="https://linkedin.com" target="_blank" class="social-btn" id="linkedinBtn" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+              <a href="https://github.com" target="_blank" class="social-btn" id="githubBtn" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+              <a href="mailto:adarshsandyal@gmail.com" class="social-btn" id="emailSocialBtn" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= SKILLS ======= -->
+  <section id="skills" class="section skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What I Know</span>
+        <h2 class="section-title">Skills & <span class="gradient-text">Tech Stack</span></h2>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-category">
+          <div class="skill-cat-header">
+            <span class="skill-cat-icon">🐍</span>
+            <h3>Programming & Analytics</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL / Snow SQL</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">Seaborn</span>
+            <span class="skill-tag">PySpark</span>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label"><span>SQL</span><span>90%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label"><span>Python</span><span>80%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label"><span>PySpark</span><span>65%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-header">
+            <span class="skill-cat-icon">📊</span>
+            <h3>BI Tools & Visualization</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">Tableau</span>
+            <span class="skill-tag">Advanced Excel</span>
+            <span class="skill-tag">Google Sheets</span>
+            <span class="skill-tag">VBA Macros</span>
+            <span class="skill-tag">Jupyter Notebook</span>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label"><span>Advanced Excel / Sheets</span><span>95%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label"><span>Power BI / Tableau</span><span>85%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-header">
+            <span class="skill-cat-icon">🗄️</span>
+            <h3>Databases & Cloud</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">BigQuery</span>
+            <span class="skill-tag">Snowflake</span>
+            <span class="skill-tag">Databricks</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">ETL Pipelines</span>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label"><span>MySQL / BigQuery</span><span>85%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label"><span>Snowflake / Databricks</span><span>75%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-header">
+            <span class="skill-cat-icon">🤖</span>
+            <h3>Machine Learning (Learning)</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag skill-tag-new">Linear Regression</span>
+            <span class="skill-tag skill-tag-new">Logistic Regression</span>
+            <span class="skill-tag skill-tag-new">Statistics & Probability</span>
+            <span class="skill-tag skill-tag-new">EDA</span>
+            <span class="skill-tag skill-tag-new">Feature Engineering</span>
+            <span class="skill-tag skill-tag-new">Customer Segmentation</span>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label"><span>Statistics & EDA</span><span>80%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill skill-bar-ai" data-width="80"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label"><span>ML Algorithms</span><span>60%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill skill-bar-ai" data-width="60"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= EXPERIENCE ======= -->
+  <section id="experience" class="section experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">My Journey</span>
+        <h2 class="section-title">Work <span class="gradient-text">Experience</span></h2>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Business Analyst — Operations & Excellence</h3>
+                <span class="timeline-company">Third Wave Coffee · Full-time</span>
+              </div>
+              <span class="timeline-date">Jan 2026 – Present</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Led development of a store-level <strong>'Pacesetter' performance model</strong> for ~200 retail outlets, establishing monthly percentile targets to optimize regional sales tracking.</li>
+              <li>Engineered store-level operational metrics during immersive barista &amp; inventory manager training to bridge field realities with corporate data strategy.</li>
+              <li>Designed and automated <strong>daily inventory &amp; resource allocation dashboards</strong> using SQL and Python, improving stock accuracy and streamlining staff rostering across multiple high-volume cafes.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>SQL</span><span>Python</span><span>Operations</span><span>Dashboards</span><span>Retail Analytics</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Business Analyst — Supply Chain Analytics & Operations</h3>
+                <span class="timeline-company">Swiggy Instamart · Full-time</span>
+              </div>
+              <span class="timeline-date">May 2024 – Jan 2026</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Built and optimized complex <strong>SQL &amp; SnowSQL queries</strong> for large-scale ETL (1M+ rows), ensuring data accuracy across critical business reports.</li>
+              <li>Optimized Inventory Health and Capacity Planning for FMCG categories using multi-source warehouse data pipelines.</li>
+              <li>Automated KPIs for Supply Chain metrics (Delivery TAT, Cost Per Delivery), directly improving last-mile efficiency.</li>
+              <li>Designed <strong>MoM/WoW trend reports</strong> that identified service gaps, leading to a <strong>10% improvement in customer retention</strong>.</li>
+              <li>Spearheaded Dispute Resolution &amp; Root Cause Analysis on inventory discrepancies, <strong>reducing data quality errors by 10%</strong>.</li>
+              <li>Integrated Python scripts to streamline reporting, reducing manual effort and enhancing data consistency.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>SQL</span><span>Snowflake</span><span>Python</span><span>ETL</span><span>Supply Chain</span><span>Databricks</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot timeline-dot-edu"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Data Analytics Tutor</h3>
+                <span class="timeline-company">Freelance · SQL, Python, Power BI, Tableau</span>
+              </div>
+              <span class="timeline-date">May 2021 – Apr 2023</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Translated complex technical data concepts into clear, actionable insights for non-technical audiences — students and business owners.</li>
+              <li>Delivered one-on-one and group tutoring in <strong>Power BI, SQL, Excel, Tableau</strong> and data visualization tools.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>Power BI</span><span>SQL</span><span>Excel</span><span>Tableau</span><span>Teaching</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= PROJECTS ======= -->
+  <section id="projects" class="section projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What I've Built</span>
+        <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card" id="project1">
+          <div class="project-card-top">
+            <div class="project-icon">🛒</div>
+            <div class="project-links">
+              <a href="https://github.com" target="_blank" class="project-link" aria-label="View on GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Data Analysis — Brazilian E-Commerce Retailer</h3>
+          <p class="project-desc">
+            Identified e-commerce trends including seasonal peaks and buying habits. Analysed orders and delivery times using SQL on BigQuery. Generated actionable insights for strategic improvements.
+          </p>
+          <div class="project-tech">
+            <span>SQL</span><span>BigQuery</span><span>MS Excel</span><span>Data Analytics</span>
+          </div>
+        </div>
+
+        <div class="project-card project-card-featured" id="project2">
+          <div class="project-featured-badge">✨ Featured</div>
+          <div class="project-card-top">
+            <div class="project-icon">🎬</div>
+            <div class="project-links">
+              <a href="https://github.com" target="_blank" class="project-link" aria-label="View on GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Netflix Exploratory Data Analysis</h3>
+          <p class="project-desc">
+            Deep EDA revealing that <strong>70% of Netflix content is movies vs. 30% series</strong>. Found 300+ movies &amp; 80+ TV series produced annually. Discovered the US &amp; India lead in release volume.
+          </p>
+          <div class="project-tech">
+            <span>Python</span><span>Pandas</span><span>Matplotlib</span><span>SQL</span><span>EDA</span>
+          </div>
+        </div>
+
+        <div class="project-card project-card-featured" id="project3">
+          <div class="project-featured-badge">✨ Featured</div>
+          <div class="project-card-top">
+            <div class="project-icon">📦</div>
+            <div class="project-links">
+              <a href="https://public.tableau.com" target="_blank" class="project-link" aria-label="View on Tableau">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Supply Chain Inventory Optimization</h3>
+          <p class="project-desc">
+            Created user-friendly Tableau dashboards for data-driven decision-making across <strong>100,000+ data entries</strong>. Pinpointed inventory inefficiencies that could yield a <strong>20% increase in turnover rate</strong>.
+          </p>
+          <div class="project-tech">
+            <span>Tableau</span><span>ETL</span><span>Business Intelligence</span><span>KPI Tracking</span>
+          </div>
+        </div>
+
+        <div class="project-card" id="project4">
+          <div class="project-card-top">
+            <div class="project-icon">🏃</div>
+            <div class="project-links">
+              <a href="https://github.com" target="_blank" class="project-link" aria-label="View on GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Aero Fit — Customer Profiling</h3>
+          <p class="project-desc">
+            Statistical profiling revealed <strong>83% of treadmill buyers</strong> earn $35K–$85K. Customers with Fitness Level 4–5 prefer premium models and average <strong>150+ miles/week</strong>.
+          </p>
+          <div class="project-tech">
+            <span>Python</span><span>Statistics</span><span>Probability</span><span>Seaborn</span>
+          </div>
+        </div>
+
+        <div class="project-card" id="project5">
+          <div class="project-card-top">
+            <div class="project-icon">⚡</div>
+            <div class="project-links">
+              <a href="https://github.com" target="_blank" class="project-link" aria-label="View on GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Large-Scale Data Analysis with PySpark</h3>
+          <p class="project-desc">
+            Utilised PySpark on Google Colab to analyse a large <strong>Last.fm dataset</strong>, exploring user listening habits and music preference patterns at scale using distributed computing.
+          </p>
+          <div class="project-tech">
+            <span>PySpark</span><span>Python</span><span>Google Colab</span><span>Big Data</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= EDUCATION ======= -->
+  <section id="education" class="section education">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Academic Background</span>
+        <h2 class="section-title">Education & <span class="gradient-text">Certifications</span></h2>
+      </div>
+      <div class="edu-grid">
+
+        <div class="edu-card" id="edu1">
+          <div class="edu-card-top">
+            <div class="edu-icon">🎓</div>
+            <span class="edu-date">Oct 2023 – Jun 2024</span>
+          </div>
+          <h3 class="edu-degree">Data Science & Machine Learning</h3>
+          <span class="edu-institution">Scaler Academy</span>
+          <p class="edu-desc">
+            Intensive program covering Python for Data Science, Statistics &amp; Probability, Machine Learning (Linear &amp; Logistic Regression), EDA, and real-world project work.
+          </p>
+          <div class="edu-tags">
+            <span>Python</span><span>ML</span><span>Statistics</span><span>EDA</span>
+          </div>
+        </div>
+
+        <div class="edu-card" id="edu2">
+          <div class="edu-card-top">
+            <div class="edu-icon">⚙️</div>
+            <span class="edu-date">Aug 2016 – Oct 2020</span>
+          </div>
+          <h3 class="edu-degree">B.E. in Mechanical Engineering</h3>
+          <span class="edu-institution">KLE Technological University, Hubballi</span>
+          <p class="edu-desc">
+            Four-year engineering degree building strong analytical and problem-solving foundations — skills that now underpin my approach to data and business challenges.
+          </p>
+          <div class="edu-tags">
+            <span>Engineering</span><span>Analytics</span><span>Problem Solving</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= CONTACT ======= -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+        <p class="section-desc">Have an opportunity, collaboration idea, or just want to say hello? I'd love to hear from you.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-card" id="contactEmailCard">
+            <div class="contact-card-icon">📧</div>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:adarshsandyal@gmail.com">adarshsandyal@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-card" id="contactPhoneCard">
+            <div class="contact-card-icon">📱</div>
+            <div>
+              <strong>Phone</strong>
+              <a href="tel:+916361647779">+91-6361647779</a>
+            </div>
+          </div>
+          <div class="contact-card" id="contactLinkedinCard">
+            <div class="contact-card-icon">💼</div>
+            <div>
+              <strong>LinkedIn</strong>
+              <a href="https://linkedin.com" target="_blank">linkedin.com/in/adarshsandyal</a>
+            </div>
+          </div>
+          <div class="contact-card" id="contactGithubCard">
+            <div class="contact-card-icon">💻</div>
+            <div>
+              <strong>GitHub</strong>
+              <a href="https://github.com" target="_blank">github.com/adarshsandyal</a>
+            </div>
+          </div>
+          <div class="contact-card" id="contactLocationCard">
+            <div class="contact-card-icon">📍</div>
+            <div>
+              <strong>Location</strong>
+              <span style="color: var(--text-secondary); font-size: 0.9rem;">Bengaluru, India</span>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="contactName">Your Name</label>
+            <input type="text" id="contactName" name="name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Your Email</label>
+            <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="contactSubject">Subject</label>
+            <input type="text" id="contactSubject" name="subject" placeholder="Job Opportunity / Collaboration" />
+          </div>
+          <div class="form-group">
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" name="message" rows="5" placeholder="Tell me about your opportunity or project..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="submitContactBtn">
+            <span>Send Message</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+          <div class="form-success" id="formSuccess">
+            ✅ Message sent! I'll get back to you shortly.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="#home" class="nav-logo">AS<span class="logo-dot">.</span></a>
+        <p>Designed & built with ❤️ by Adarsh Sandyal · Bengaluru, IN</p>
+        <div class="footer-social">
+          <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" id="footerLinkedin">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://github.com" target="_blank" aria-label="GitHub" id="footerGithub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <a href="mailto:adarshsandyal@gmail.com" aria-label="Email" id="footerEmail">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Adarsh Sandyal. All rights reserved.</span>
+        <a href="#home" class="back-to-top" id="backToTop">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
