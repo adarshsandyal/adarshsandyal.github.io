@@ -339,4 +339,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   statNumbers.forEach(el => counterObserver.observe(el));
 
+
+  // ============================================
+  // 12. CERTIFICATIONS FILTER
+  // ============================================
+  const filterBtns = document.querySelectorAll('.cert-filter-btn');
+  const certCards = document.querySelectorAll('.cert-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      certCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
 });

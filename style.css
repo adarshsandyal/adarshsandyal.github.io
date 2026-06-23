@@ -1449,3 +1449,173 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   .contact-form { padding: 24px; }
   .about-info-card { padding: 24px; }
 }
+
+/* ============================================
+   CERTIFICATIONS
+   ============================================ */
+.certifications { background: var(--bg-secondary); }
+
+/* Filter Buttons */
+.cert-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 48px;
+}
+
+.cert-filter-btn {
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cert-filter-btn:hover {
+  border-color: var(--border-glow);
+  color: var(--accent-purple-light);
+}
+
+.cert-filter-btn.active {
+  background: var(--gradient-main);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(139,92,246,0.35);
+}
+
+/* Cert Grid */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Cert Card */
+.cert-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gradient-main);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.cert-card:hover {
+  border-color: var(--border-glow);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(139,92,246,0.12);
+}
+
+.cert-card:hover::before { opacity: 1; }
+
+.cert-card-highlight {
+  border-color: rgba(139,92,246,0.3);
+  background: linear-gradient(135deg, rgba(139,92,246,0.07) 0%, rgba(6,182,212,0.04) 100%);
+}
+
+/* Hidden state for filtering */
+.cert-card.hidden {
+  display: none;
+}
+
+.cert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.cert-issuer-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+}
+
+/* Issuer Colors */
+.badge-hackerrank { background: rgba(0,234,182,0.15); color: #00eab6; border: 1px solid rgba(0,234,182,0.3); }
+.badge-coursera   { background: rgba(0,86,210,0.15);  color: #4d9fff; border: 1px solid rgba(0,86,210,0.3); }
+.badge-linkedin   { background: rgba(0,119,181,0.15); color: #5ab5f5; border: 1px solid rgba(0,119,181,0.3); }
+.badge-udemy      { background: rgba(167,86,246,0.15); color: var(--accent-purple-light); border: 1px solid rgba(167,86,246,0.3); }
+.badge-google     { background: rgba(234,67,53,0.15);  color: #f87171; border: 1px solid rgba(234,67,53,0.3); }
+.badge-microsoft  { background: rgba(0,164,239,0.15);  color: #67e8f9; border: 1px solid rgba(0,164,239,0.3); }
+.badge-forage     { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+
+.cert-date {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.cert-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.35;
+  flex-grow: 1;
+}
+
+.cert-id {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.cert-verify-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-cyan-light);
+  padding: 5px 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(6,182,212,0.3);
+  background: rgba(6,182,212,0.08);
+  transition: var(--transition);
+  align-self: flex-start;
+  margin-top: auto;
+  font-family: var(--font-mono);
+}
+
+.cert-verify-btn:hover {
+  background: rgba(6,182,212,0.18);
+  border-color: var(--accent-cyan);
+  color: white;
+  transform: translateX(3px);
+}
+
+@media (max-width: 1024px) {
+  .cert-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .cert-grid { grid-template-columns: 1fr; }
+  .cert-filters { gap: 8px; }
+  .cert-filter-btn { padding: 6px 14px; font-size: 0.78rem; }
+}
+
