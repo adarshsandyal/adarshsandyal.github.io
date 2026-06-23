@@ -795,7 +795,8 @@
             </div>
           </div>
         </div>
-        <form class="contact-form" id="contactForm" novalidate>
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" id="contactForm" novalidate>
+          <input type="hidden" name="access_key" value="fab91290-53b2-4f86-8905-a7cf7dc16b52">
           <div class="form-group">
             <label for="contactName">Your Name</label>
             <input type="text" id="contactName" name="name" placeholder="John Doe" required />

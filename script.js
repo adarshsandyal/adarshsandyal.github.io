@@ -218,29 +218,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================
-  // 7. CONTACT FORM SUBMIT
+  // 7. CONTACT FORM SUBMIT (Web3Forms)
   // ============================================
   const contactForm = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
 
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = document.getElementById('submitContactBtn');
       btn.innerHTML = '<span>Sending...</span>';
       btn.disabled = true;
 
-      setTimeout(() => {
+      const formData = new FormData(contactForm);
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          formSuccess.classList.add('visible');
+          formSuccess.textContent = "✅ Message sent! I'll get back to you shortly.";
+          contactForm.reset();
+        } else {
+          formSuccess.classList.add('visible');
+          formSuccess.style.color = '#f87171';
+          formSuccess.textContent = "❌ Something went wrong. Please try again.";
+        }
+      } catch (error) {
         formSuccess.classList.add('visible');
-        contactForm.reset();
+        formSuccess.style.color = '#f87171';
+        formSuccess.textContent = "❌ Network error. Please try again later.";
+      } finally {
         btn.innerHTML = `<span>Send Message</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="22" y1="2" x2="11" y2="13"/>
             <polygon points="22 2 15 22 11 13 2 9 22 2"/>
           </svg>`;
         btn.disabled = false;
-        setTimeout(() => formSuccess.classList.remove('visible'), 5000);
-      }, 1200);
+        setTimeout(() => {
+          formSuccess.classList.remove('visible');
+          formSuccess.style.color = ''; // reset color
+        }, 5000);
+      }
     });
   }
 
