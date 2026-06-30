@@ -1619,3 +1619,57 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   .cert-filter-btn { padding: 6px 14px; font-size: 0.78rem; }
 }
 
+/* ======= HOBBIES ======= */
+.hobbies-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.hobby-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 40px 20px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.hobby-card:hover {
+  border-color: var(--border-glow);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(139,92,246,0.12);
+}
+
+.hobby-icon {
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+  text-shadow: 0 0 20px rgba(139,92,246,0.4);
+}
+
+.hobby-card h3 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.hobby-card p {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.badge-run {
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--accent-purple-light);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.badge-strava {
+  background: rgba(252, 76, 2, 0.15);
+  color: #fc4c02;
+  border: 1px solid rgba(252, 76, 2, 0.3);
+}
+
