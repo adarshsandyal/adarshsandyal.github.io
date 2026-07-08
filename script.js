@@ -365,7 +365,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================
-  // 12. CERTIFICATIONS FILTER
+  // 12. PROFILE VISIT COUNTER (Live API)
+  // ============================================
+  const visitCounterEl = document.getElementById('visitCounter');
+
+  if (visitCounterEl) {
+    // Use a unique key for your portfolio
+    const counterKey = 'adarsh-sandyal-portfolio-visits';
+    const apiUrl = `https://countapi.mileshilliard.com/api/v1/hit/${counterKey}`;
+
+    fetch(apiUrl)
+      .then(res => res.json())
+      .then(data => {
+        const count = data.value || data.count || 0;
+        // Animate the counter
+        let current = 0;
+        const step = Math.max(1, Math.floor(count / 50));
+        const interval = setInterval(() => {
+          current = Math.min(current + step, count);
+          visitCounterEl.textContent = current.toLocaleString();
+          if (current >= count) {
+            visitCounterEl.textContent = count.toLocaleString();
+            clearInterval(interval);
+          }
+        }, 20);
+      })
+      .catch(() => {
+        // Fallback: use localStorage as a simple counter
+        let localCount = parseInt(localStorage.getItem('portfolio_visits') || '0', 10);
+        localCount++;
+        localStorage.setItem('portfolio_visits', localCount.toString());
+        visitCounterEl.textContent = localCount.toLocaleString();
+      });
+  }
+
+
+  // ============================================
+  // 13. CERTIFICATIONS FILTER
   // ============================================
   const filterBtns = document.querySelectorAll('.cert-filter-btn');
   const certCards = document.querySelectorAll('.cert-card');

@@ -458,6 +458,33 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   background: var(--border-color);
 }
 
+/* Live visit counter stat */
+.stat-item-live {
+  position: relative;
+}
+
+.stat-item-live .stat-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  background: #10b981;
+  border-radius: 50%;
+  display: inline-block;
+  animation: livePulse 2s ease-in-out infinite;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 6px rgba(16, 185, 129, 0.6); }
+  50% { opacity: 0.6; transform: scale(0.8); box-shadow: 0 0 2px rgba(16, 185, 129, 0.3); }
+}
+
 /* Avatar */
 .hero-visual {
   display: flex;
