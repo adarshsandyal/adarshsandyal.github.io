@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.speedX = (Math.random() - 0.5) * 0.35;
       this.speedY = (Math.random() - 0.5) * 0.35;
       this.opacity = Math.random() * 0.45 + 0.15;
+      this.isFlame = Math.random() < 0.35;
     }
 
     update() {
@@ -83,9 +84,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const light = isLightTheme();
       if (this.isGlyph) {
         ctx.font = `600 ${this.size}px "JetBrains Mono", monospace`;
-        ctx.fillStyle = light
-          ? (Math.random() > 0.4 ? `rgba(2, 136, 209, ${this.opacity * 0.55})` : `rgba(224, 40, 22, ${this.opacity * 0.45})`)
-          : (Math.random() > 0.4 ? `rgba(41, 181, 232, ${this.opacity * 0.7})` : `rgba(255, 54, 33, ${this.opacity * 0.65})`);
+        if (light) {
+          ctx.fillStyle = this.isFlame
+            ? `rgba(224, 40, 22, ${this.opacity * 0.45})`
+            : `rgba(2, 136, 209, ${this.opacity * 0.55})`;
+        } else {
+          ctx.fillStyle = this.isFlame
+            ? `rgba(255, 54, 33, ${this.opacity * 0.65})`
+            : `rgba(41, 181, 232, ${this.opacity * 0.7})`;
+        }
         ctx.fillText(this.glyph, this.x, this.y);
       } else {
         ctx.beginPath();
