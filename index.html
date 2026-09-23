@@ -10,6 +10,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23080b14%22/><text x=%2250%22 y=%2265%22 font-family=%22sans-serif%22 font-size=%2250%22 font-weight=%22bold%22 text-anchor=%22middle%22 fill=%22%23f1f5f9%22>AS</text><circle cx=%2280%22 cy=%2265%22 r=%226%22 fill=%22%2306b6d4%22/></svg>">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
 </head>
 <body>
 
@@ -27,10 +39,28 @@
         <li><a href="#hobbies" class="nav-link">Hobbies</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
-      <a href="#contact" class="nav-cta" id="navCta">Hire Me</a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Switch Theme (Light/Dark)">
+          <svg class="theme-icon theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a href="#contact" class="nav-cta" id="navCta">Hire Me</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -70,25 +100,47 @@
         </div>
         <div class="hero-stats">
           <div class="stat-item">
-            <span class="stat-number">5+</span>
+            <div class="stat-top">
+              <span class="stat-number">5+</span>
+              <span class="stat-trend stat-trend-up">▲ Growth</span>
+            </div>
             <span class="stat-label">Years in Data</span>
+            <div class="stat-sparkline">
+              <svg viewBox="0 0 60 16" class="sparkline-svg"><path d="M0,14 L12,11 L24,13 L36,7 L48,8 L60,2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <span class="stat-number">5+</span>
-            <span class="stat-label">Projects</span>
+            <div class="stat-top">
+              <span class="stat-number">~200</span>
+              <span class="stat-trend stat-trend-up">▲ Pacesetter</span>
+            </div>
+            <span class="stat-label">Stores Modeled</span>
+            <div class="stat-sparkline">
+              <svg viewBox="0 0 60 16" class="sparkline-svg"><path d="M0,15 L15,11 L30,12 L45,6 L60,1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <span class="stat-number">1M+</span>
-            <span class="stat-label">Rows Processed</span>
+            <div class="stat-top">
+              <span class="stat-number">1Bn+</span>
+              <span class="stat-trend stat-trend-cyan">99.9% ETL</span>
+            </div>
+            <span class="stat-label">Rows Queried</span>
+            <div class="stat-sparkline">
+              <svg viewBox="0 0 60 16" class="sparkline-svg"><path d="M0,12 L15,10 L30,11 L45,6 L60,3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item stat-item-live">
-            <span class="stat-number" id="visitCounter">—</span>
-            <span class="stat-label">
-              <span class="live-dot"></span>Profile Views
-            </span>
+            <div class="stat-top">
+              <span class="stat-number" id="visitCounter">—</span>
+              <span class="stat-trend stat-trend-live"><span class="live-dot"></span>LIVE</span>
+            </div>
+            <span class="stat-label">Profile Views</span>
+            <div class="stat-sparkline">
+              <svg viewBox="0 0 60 16" class="sparkline-svg"><path d="M0,13 L15,14 L30,8 L45,10 L60,2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
           </div>
         </div>
       </div>
@@ -114,11 +166,73 @@
     </div>
   </section>
 
+  <!-- ======= INTERACTIVE SQL CONSOLE ======= -->
+  <section class="sql-section" id="dataConsoleSection">
+    <div class="container">
+      <div class="sql-console-card">
+        <div class="console-header">
+          <div class="console-controls">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span class="console-badge">❄️ snowflake://analytics_dw · 🧱 databricks://lakehouse</span>
+          </div>
+          <div class="console-title">
+            <span class="console-icon">⚡</span> <code>adarsh_dw.production.analyst_console</code>
+          </div>
+          <div class="console-status" id="queryStatus">
+            <span class="status-indicator"></span><span id="statusText">Ready · Idle</span>
+          </div>
+        </div>
+        <div class="console-toolbar">
+          <span class="toolbar-label"><span class="terminal-prompt">$</span> SELECT query FROM presets:</span>
+          <div class="query-pills" id="queryPills">
+            <button class="query-pill active" data-query="impact">⚡ business_impact</button>
+            <button class="query-pill" data-query="stack">🛠 tech_stack</button>
+            <button class="query-pill" data-query="running">🏃‍♂️ running_telemetry</button>
+            <button class="query-pill" data-query="vitals">☕ analyst_vitals</button>
+          </div>
+        </div>
+        <div class="console-editor">
+          <div class="editor-gutter">
+            <span>1</span><span>2</span><span>3</span><span>4</span>
+          </div>
+          <pre class="sql-code" id="sqlDisplay"><span class="sql-keyword">SELECT</span> metric, organization, business_impact, confidence_level
+<span class="sql-keyword">FROM</span> analytics_portfolio.impact_summary
+<span class="sql-keyword">WHERE</span> candidate = <span class="sql-string">'Adarsh Sandyal'</span>
+<span class="sql-keyword">ORDER BY</span> business_value <span class="sql-keyword">DESC</span>;</pre>
+          <button class="run-query-btn" id="runQueryBtn" title="Run Query">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Run Query</span>
+          </button>
+        </div>
+        <div class="console-output">
+          <div class="output-header">
+            <div class="output-title">
+              <span class="output-icon">📊</span> Query Results (<span id="outputRows">0 rows</span> in <span id="outputTime">0.000s</span>)
+            </div>
+            <div class="output-badges">
+              <span class="output-badge badge-green" id="outputBadgeStatus">Ready to Run</span>
+              <span class="output-badge badge-blue">COMPUTE_WH (XS)</span>
+            </div>
+          </div>
+          <div class="output-table-wrap" id="outputTableWrap">
+            <div class="console-empty-state">
+              <div class="empty-icon">⚡</div>
+              <div class="empty-title">Query Ready to Execute</div>
+              <p class="empty-desc">Click <strong class="highlight-run">▶ Run Query</strong> or press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> to compile and execute against <code>snowflake://analytics_dw</code></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ======= ABOUT ======= -->
   <section id="about" class="section about">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Who I Am</span>
+        <span class="section-tag"><span class="tag-keyword">SCHEMA</span> about_me</span>
         <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
       </div>
       <div class="about-grid">
@@ -127,7 +241,7 @@
             I'm a Business Analyst who lives at the intersection of data, operations, and strategy — currently driving analytics at <em>Third Wave Coffee</em>.
           </p>
           <p>
-            With experience spanning <strong>Swiggy Instamart's supply chain</strong> and retail operations, I've built ETL pipelines, automated dashboards, led inventory optimization, and improved last-mile delivery efficiency for millions of customers. I've worked with 1M+ row datasets and turned raw operational chaos into clean, actionable insight.
+            With experience spanning <strong>Swiggy Instamart's supply chain</strong> and retail operations, I've built ETL pipelines, automated dashboards, led inventory optimization, and improved last-mile delivery efficiency for millions of customers. I've worked with billion-scale datasets and turned raw operational chaos into clean, actionable insight.
           </p>
           <p>
             I'm now deepening my technical edge through a <strong>Data Science & Machine Learning program at Scaler</strong>, adding Python, ML algorithms, and statistical modeling to my toolkit — bridging the gap between business intuition and machine intelligence.
@@ -211,7 +325,7 @@
   <section id="skills" class="section skills">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">What I Know</span>
+        <span class="section-tag"><span class="tag-keyword">SELECT</span> tech_stack</span>
         <h2 class="section-title">Skills & <span class="gradient-text">Tech Stack</span></h2>
       </div>
       <div class="skills-grid">
@@ -329,7 +443,7 @@
   <section id="experience" class="section experience">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">My Journey</span>
+        <span class="section-tag"><span class="tag-keyword">TABLE</span> career_history</span>
         <h2 class="section-title">Work <span class="gradient-text">Experience</span></h2>
       </div>
       <div class="timeline">
@@ -407,7 +521,7 @@
   <section id="projects" class="section projects">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">What I've Built</span>
+        <span class="section-tag"><span class="tag-keyword">PIPELINE</span> data_projects</span>
         <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
       </div>
       <div class="projects-grid">
@@ -520,7 +634,7 @@
   <section id="education" class="section education">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Academic Background</span>
+        <span class="section-tag"><span class="tag-keyword">FOUNDATION</span> education</span>
         <h2 class="section-title">Education & <span class="gradient-text">Certifications</span></h2>
       </div>
       <div class="edu-grid">
@@ -563,7 +677,7 @@
   <section id="certifications" class="section certifications">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Verified Credentials</span>
+        <span class="section-tag"><span class="tag-keyword">INDEX</span> verified_certs</span>
         <h2 class="section-title">Licenses & <span class="gradient-text">Certifications</span></h2>
         <p class="section-desc">25+ certifications across SQL, Python, BI Tools, Cloud & Data Analytics</p>
       </div>
@@ -761,7 +875,7 @@
   <section id="hobbies" class="section hobbies">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Beyond Work</span>
+        <span class="section-tag"><span class="tag-keyword">TELEMETRY</span> endurance_running</span>
         <h2 class="section-title">My <span class="gradient-text">Hobbies</span></h2>
         <p class="section-desc">When I'm not analyzing data, you can find me on the tracks.</p>
       </div>
@@ -770,7 +884,7 @@
         <div class="hobby-card">
           <div class="hobby-icon">🏃‍♂️</div>
           <h3>Running & Fitness</h3>
-          <p>Passionate about running, tracking my pace, and continuously pushing my limits. From 10K races to everyday training — the road is my second office.</p>
+          <p>Passionate about running, tracking my pace, and continuously pushing my limits. From 5K & 10K races to everyday training — the road is my second office.</p>
           <a href="https://www.strava.com/athletes/41339561" target="_blank" class="btn btn-outline" style="border-color: rgba(252,76,2,0.5); color: #fc4c02; margin-top: 10px;" id="stravaBtn">
             <span style="display: flex; align-items: center; gap: 8px;">
               <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
@@ -783,7 +897,18 @@
           <h3 style="text-align: center; margin-bottom: 24px; font-size: 1.2rem; font-family: var(--font-mono); color: var(--text-primary);">🏅 Race Timing Certificates</h3>
           <div class="cert-grid">
 
-            <!-- Run 4 — Best time first -->
+            <!-- Run 5 -->
+            <div class="cert-card cert-card-highlight" id="run5">
+              <div class="cert-header">
+                <span class="cert-issuer-badge badge-run">5K</span>
+                <span class="cert-date">16 Aug 2026</span>
+              </div>
+              <h3 class="cert-name">Run for Rajiv 5K - Bangalore 2026</h3>
+              <p class="cert-id">BIB #7564 · Chip Time: <strong>21:46</strong></p>
+              <a href="https://app.racetime.in/results/details?raceID=24ed941d-50d5-4bef-97ad-d6c78e2daea2&event=5K&bibNo=7564&name=ADARSH%20SANDYAL" target="_blank" class="cert-verify-btn" id="certRun5">View Result ↗</a>
+            </div>
+
+            <!-- Run 4 — Best 10K time -->
             <div class="cert-card cert-card-highlight" id="run4">
               <div class="cert-header">
                 <span class="cert-issuer-badge badge-run">10K</span>
@@ -838,7 +963,7 @@
   <section id="contact" class="section contact">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Get In Touch</span>
+        <span class="section-tag"><span class="tag-keyword">ENDPOINT</span> connect_api</span>
         <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
         <p class="section-desc">Have an opportunity, collaboration idea, or just want to say hello? I'd love to hear from you.</p>
       </div>

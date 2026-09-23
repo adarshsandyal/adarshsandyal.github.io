@@ -5,13 +5,52 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ============================================
-  // 1. PARTICLE CANVAS BACKGROUND
+  // THEME ENGINE (System Preference & Manual Toggle)
+  // ============================================
+  const themeToggle = document.getElementById('themeToggle');
+
+  function getCurrentTheme() {
+    return document.documentElement.getAttribute('data-theme') || 
+      (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  }
+
+  function applyTheme(theme, save = true) {
+    document.documentElement.setAttribute('data-theme', theme);
+    if (save) {
+      localStorage.setItem('theme', theme);
+    }
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const current = getCurrentTheme();
+      const target = current === 'light' ? 'dark' : 'light';
+      applyTheme(target, true);
+    });
+  }
+
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) {
+        applyTheme(e.matches ? 'dark' : 'light', false);
+      }
+    });
+  }
+
+  function isLightTheme() {
+    return document.documentElement.getAttribute('data-theme') === 'light';
+  }
+
+
+  // ============================================
+  // 1. PARTICLE CANVAS BACKGROUND (Data Nodes & Glyphs)
   // ============================================
   const canvas = document.getElementById('particleCanvas');
   const ctx = canvas.getContext('2d');
 
   let particles = [];
-  const PARTICLE_COUNT = 80;
+  const PARTICLE_COUNT = 75;
+  const DATA_GLYPHS = ['Σ', 'SQL', 'pd', 'AVG()', '42', '101', 'JOIN', 'CTE', 'NaN', 'λ', 'df', 'KPI'];
 
   function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -24,28 +63,38 @@ document.addEventListener('DOMContentLoaded', () => {
     reset() {
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
-      this.size = Math.random() * 1.5 + 0.5;
-      this.speedX = (Math.random() - 0.5) * 0.4;
-      this.speedY = (Math.random() - 0.5) * 0.4;
-      this.opacity = Math.random() * 0.5 + 0.1;
-      this.color = Math.random() > 0.5
-        ? `rgba(139, 92, 246, ${this.opacity})`
-        : `rgba(6, 182, 212, ${this.opacity})`;
+      this.isGlyph = Math.random() < 0.22;
+      this.glyph = DATA_GLYPHS[Math.floor(Math.random() * DATA_GLYPHS.length)];
+      this.size = this.isGlyph ? (Math.random() * 2 + 10) : (Math.random() * 1.5 + 0.5);
+      this.speedX = (Math.random() - 0.5) * 0.35;
+      this.speedY = (Math.random() - 0.5) * 0.35;
+      this.opacity = Math.random() * 0.45 + 0.15;
     }
 
     update() {
       this.x += this.speedX;
       this.y += this.speedY;
-      if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+      if (this.x < -20 || this.x > canvas.width + 20 || this.y < -20 || this.y > canvas.height + 20) {
         this.reset();
       }
     }
 
     draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = this.color;
-      ctx.fill();
+      const light = isLightTheme();
+      if (this.isGlyph) {
+        ctx.font = `600 ${this.size}px "JetBrains Mono", monospace`;
+        ctx.fillStyle = light
+          ? (Math.random() > 0.4 ? `rgba(2, 136, 209, ${this.opacity * 0.55})` : `rgba(224, 40, 22, ${this.opacity * 0.45})`)
+          : (Math.random() > 0.4 ? `rgba(41, 181, 232, ${this.opacity * 0.7})` : `rgba(255, 54, 33, ${this.opacity * 0.65})`);
+        ctx.fillText(this.glyph, this.x, this.y);
+      } else {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = light
+          ? `rgba(2, 136, 209, ${this.opacity * 0.5})`
+          : `rgba(41, 181, 232, ${this.opacity * 0.75})`;
+        ctx.fill();
+      }
     }
   }
 
@@ -57,14 +106,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function drawConnections() {
+    const light = isLightTheme();
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
         const dy = particles[i].y - particles[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 100) {
+        if (dist < 95) {
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(139, 92, 246, ${0.08 * (1 - dist / 100)})`;
+          ctx.strokeStyle = light
+            ? `rgba(2, 136, 209, ${0.07 * (1 - dist / 95)})`
+            : `rgba(41, 181, 232, ${0.1 * (1 - dist / 95)})`;
           ctx.lineWidth = 0.5;
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
@@ -141,10 +193,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const typewriterEl = document.getElementById('typewriter');
   const roles = [
     'Business Analyst',
-    'Supply Chain Analytics Expert',
-    'SQL & Python Developer',
+    'SQL Whisperer & Query Crafter',
+    'Supply Chain Optimizer',
     'Data & BI Specialist',
-    'Aspiring Data Scientist'
+    'Machine Learning Practitioner',
+    'Sub-22-Min 5K Runner 🏃‍♂️',
+    'Coffee-to-Insights Converter ☕'
   ];
 
   let roleIndex = 0;
@@ -341,25 +395,34 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================================
   // 11. STATS COUNTER ANIMATION
   // ============================================
-  const statNumbers = document.querySelectorAll('.stat-number');
+  const statNumbers = document.querySelectorAll('.stat-number:not(#visitCounter)');
 
   const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const el = entry.target;
-        const target = parseInt(el.textContent);
-        const suffix = el.textContent.replace(/[0-9]/g, '');
-        let count = 0;
-        const step = target / 40;
-        const interval = setInterval(() => {
-          count = Math.min(count + step, target);
-          el.textContent = Math.round(count) + suffix;
-          if (count >= target) clearInterval(interval);
-        }, 30);
+        const text = el.textContent.trim();
+        const match = text.match(/^([^\d]*)(\d+)(.*)$/);
+        if (match) {
+          const prefix = match[1] || '';
+          const target = parseInt(match[2], 10);
+          const suffix = match[3] || '';
+          let count = 0;
+          const steps = 30;
+          const step = Math.max(1, Math.ceil(target / steps));
+          const interval = setInterval(() => {
+            count = Math.min(count + step, target);
+            el.textContent = `${prefix}${count}${suffix}`;
+            if (count >= target) {
+              el.textContent = text;
+              clearInterval(interval);
+            }
+          }, 35);
+        }
         counterObserver.unobserve(el);
       }
     });
-  }, { threshold: 1 });
+  }, { threshold: 0.6 });
 
   statNumbers.forEach(el => counterObserver.observe(el));
 
@@ -421,5 +484,183 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+  // ============================================
+  // 14. INTERACTIVE SQL CONSOLE
+  // ============================================
+  const queryPills = document.querySelectorAll('.query-pill');
+  const sqlDisplay = document.getElementById('sqlDisplay');
+  const runQueryBtn = document.getElementById('runQueryBtn');
+  const outputTableWrap = document.getElementById('outputTableWrap');
+  const outputRows = document.getElementById('outputRows');
+  const outputTime = document.getElementById('outputTime');
+  const queryStatus = document.getElementById('statusText');
+
+  const queryPresets = {
+    impact: {
+      sql: `<span class="sql-keyword">SELECT</span> metric, organization, business_impact, status\n<span class="sql-keyword">FROM</span> analytics_portfolio.impact_summary\n<span class="sql-keyword">WHERE</span> candidate = <span class="sql-string">'Adarsh Sandyal'</span>\n<span class="sql-keyword">ORDER BY</span> business_value <span class="sql-keyword">DESC</span>;`,
+      time: '0.038s',
+      rows: '3 rows',
+      headers: ['Metric', 'Organization', 'Business Impact', 'Status'],
+      data: [
+        ['Store Performance Model', 'Third Wave Coffee', 'Established monthly percentile targets for ~200 cafes', 'Production'],
+        ['Customer Retention Lift', 'Swiggy Instamart', '+10% retention via targeted offer recommendation matrix', 'Validated'],
+        ['Automated Inventory Pipeline', 'Third Wave Coffee', 'Daily automated SQL/Python ETL with 99.9% uptime', 'Active']
+      ]
+    },
+    stack: {
+      sql: `<span class="sql-keyword">SELECT</span> tool, domain, proficiency, signature_skill\n<span class="sql-keyword">FROM</span> candidate_skills\n<span class="sql-keyword">WHERE</span> proficiency >= <span class="sql-num">80</span>\n<span class="sql-keyword">ORDER BY</span> proficiency <span class="sql-keyword">DESC</span>;`,
+      time: '0.024s',
+      rows: '4 rows',
+      headers: ['Tool', 'Domain', 'Proficiency', 'Signature Skill'],
+      data: [
+        ['Advanced Excel / Sheets', 'Analytics & Modeling', '95%', 'Complex financial models & automated VBA'],
+        ['SQL / SnowSQL', 'Data Engineering', '90%', 'Window functions, CTEs & query indexing'],
+        ['Power BI / Tableau', 'Business Intelligence', '85%', 'Executive KPI dashboards with drill-downs'],
+        ['Python / Pandas', 'Data Science & ML', '80%', 'EDA, statistical tests & ML pipelines']
+      ]
+    },
+    running: {
+      sql: `<span class="sql-keyword">SELECT</span> race_event, distance, finish_time, percentile_rank\n<span class="sql-keyword">FROM</span> runner_telemetry\n<span class="sql-keyword">WHERE</span> runner = <span class="sql-string">'Adarsh Sandyal'</span>\n<span class="sql-keyword">ORDER BY</span> pace_sec_per_km <span class="sql-keyword">ASC</span>;`,
+      time: '0.019s',
+      rows: '3 rows',
+      headers: ['Race Event', 'Distance', 'Chip Time', 'Rank / Percentile'],
+      data: [
+        ['Run for Rajiv 2026', '5K', '21:46', 'Rank #91 of 2,543 (Top 4%)'],
+        ['JSW Steel City Run', '10K', '46:46', 'Personal Best (4:40 min/km)'],
+        ['Kempegowda Run', '10K', '47:04', 'Finish Time Verified']
+      ]
+    },
+    vitals: {
+      sql: `<span class="sql-keyword">SELECT</span> vitals_key, observed_value, unit, analyst_remark\n<span class="sql-keyword">FROM</span> adarsh_daily_telemetry\n<span class="sql-keyword">GROUP BY</span> <span class="sql-num">1</span>, <span class="sql-num">2</span>, <span class="sql-num">3</span>, <span class="sql-num">4</span>;`,
+      time: '0.012s',
+      rows: '4 rows',
+      headers: ['Telemetry Key', 'Observed Value', 'Unit', 'Analyst Remark'],
+      data: [
+        ['Coffee-to-Query Ratio', '3.4', 'cups / day', 'Third Wave Roasts preferred'],
+        ['Null Value Tolerance', '0.00', '% tolerance', 'Extreme prejudice against dirty joins'],
+        ['Favorite SQL Keyword', 'QUALIFY / CTE', 'syntax', 'Window functions are pure poetry'],
+        ['Career Trajectory', 'Exponential', 'growth', 'Open to high-impact opportunities']
+      ]
+    }
+  };
+
+  let currentPresetKey = 'impact';
+
+  function renderEmptyState(presetKey) {
+    const preset = queryPresets[presetKey];
+    if (!preset) return;
+
+    if (sqlDisplay) sqlDisplay.innerHTML = preset.sql;
+    if (outputRows) outputRows.textContent = '0 rows';
+    if (outputTime) outputTime.textContent = '0.000s';
+    const statusTextEl = document.getElementById('statusText');
+    if (statusTextEl) statusTextEl.textContent = 'Query staged · Ready to execute';
+
+    const statusBadge = document.getElementById('outputBadgeStatus');
+    if (statusBadge) statusBadge.textContent = 'Ready to Run';
+
+    if (outputTableWrap) {
+      outputTableWrap.innerHTML = `
+        <div class="console-empty-state">
+          <div class="empty-icon">⚡</div>
+          <div class="empty-title">Query Ready to Execute</div>
+          <p class="empty-desc">Click <strong class="highlight-run">▶ Run Query</strong> or press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> to compile and execute against <code>snowflake://analytics_dw</code></p>
+        </div>
+      `;
+    }
+  }
+
+  function executeQuery(presetKey) {
+    const preset = queryPresets[presetKey];
+    if (!preset || !outputTableWrap) return;
+
+    // Show loading state
+    if (runQueryBtn) {
+      runQueryBtn.disabled = true;
+      runQueryBtn.innerHTML = `
+        <span class="sql-loader-spinner" style="width: 14px; height: 14px; border-width: 2px;"></span>
+        <span>Running...</span>
+      `;
+    }
+
+    const statusTextEl = document.getElementById('statusText');
+    if (statusTextEl) statusTextEl.textContent = 'Querying partition on COMPUTE_WH...';
+
+    outputTableWrap.innerHTML = `
+      <div class="console-loading-state">
+        <div class="sql-loader-spinner"></div>
+        <div class="loading-msg">Executing query across partitions on Snowflake DW...</div>
+        <div class="loading-submsg">Parsing AST & verifying data integrity (0 warnings)</div>
+      </div>
+    `;
+
+    setTimeout(() => {
+      if (sqlDisplay) sqlDisplay.innerHTML = preset.sql;
+      if (outputTime) outputTime.textContent = preset.time;
+      if (outputRows) outputRows.textContent = preset.rows;
+      if (statusTextEl) statusTextEl.textContent = `Completed in ${preset.time} · 0 warnings · 0 NULLs`;
+
+      const statusBadge = document.getElementById('outputBadgeStatus');
+      if (statusBadge) statusBadge.textContent = '✓ 100% Precision';
+
+      let tableHtml = '<table class="console-table"><thead><tr>';
+      preset.headers.forEach(h => {
+        tableHtml += `<th>${h}</th>`;
+      });
+      tableHtml += '</tr></thead><tbody>';
+
+      preset.data.forEach(row => {
+        tableHtml += '<tr>';
+        row.forEach((cell, idx) => {
+          if (idx === row.length - 1) {
+            tableHtml += `<td><span class="table-tag">${cell}</span></td>`;
+          } else {
+            tableHtml += `<td>${cell}</td>`;
+          }
+        });
+        tableHtml += '</tr>';
+      });
+
+      tableHtml += '</tbody></table>';
+      outputTableWrap.innerHTML = tableHtml;
+
+      if (runQueryBtn) {
+        runQueryBtn.disabled = false;
+        runQueryBtn.innerHTML = `
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <span>Run Query</span>
+        `;
+      }
+    }, 380);
+  }
+
+  queryPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      queryPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      currentPresetKey = pill.getAttribute('data-query');
+      renderEmptyState(currentPresetKey);
+    });
+  });
+
+  if (runQueryBtn) {
+    runQueryBtn.addEventListener('click', () => {
+      executeQuery(currentPresetKey);
+    });
+  }
+
+  // Ctrl + Enter shortcut support
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      const consoleCard = document.querySelector('.sql-console-card');
+      if (consoleCard) {
+        executeQuery(currentPresetKey);
+      }
+    }
+  });
+
+  // Initial staged render (NO results table until Run Query is clicked!)
+  renderEmptyState('impact');
 
 });
