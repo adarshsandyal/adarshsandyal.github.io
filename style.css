@@ -848,6 +848,12 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: grayscale(100%) contrast(1.15) brightness(1.02);
+  transition: filter var(--transition), transform var(--transition);
+}
+
+[data-theme="light"] .glass-avatar-img {
+  filter: grayscale(100%) contrast(1.12) brightness(1.0);
 }
 
 .glass-user-info {
@@ -1894,14 +1900,32 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .ticker-track-projects {
   display: flex;
   gap: 24px;
+  padding-right: 24px;
   width: max-content;
   animation: tickerScrollLeft 45s linear infinite;
   will-change: transform;
 }
 
-.ticker-outer:hover .ticker-track-projects,
 .ticker-track-projects.is-paused {
   animation-play-state: paused;
+}
+
+@keyframes tickerScrollLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes tickerScrollRight {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .ticker-fade {
@@ -1927,6 +1951,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   width: 360px;
   min-width: 360px;
   max-width: 360px;
+  flex-shrink: 0;
   box-sizing: border-box;
 }
 
@@ -1959,31 +1984,34 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   border-color: rgba(0, 0, 0, 0.18);
 }
 
-.project-featured-badge {
-  position: absolute;
-  top: -11px;
-  left: 24px;
+.project-card-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.project-featured-pill {
   font-size: 0.68rem;
   font-weight: 700;
   font-family: var(--font-mono);
-  letter-spacing: 0.04em;
-  padding: 3px 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 4px 12px;
   border-radius: 100px;
   background: #ffffff;
   color: #09090b;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
   border: 1px solid #ffffff;
-  z-index: 2;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  line-height: 1.2;
 }
 
-[data-theme="light"] .project-featured-badge {
+[data-theme="light"] .project-featured-pill {
   background: #09090b;
   color: #ffffff;
   border-color: #09090b;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 .project-card-top {
@@ -2530,6 +2558,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .certs-ticker-track {
   display: flex;
   gap: 16px;
+  padding-right: 16px;
   width: max-content;
   will-change: transform;
 }
@@ -2542,8 +2571,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   animation: tickerScrollRight 52s linear infinite;
 }
 
-.certs-ticker-wrapper:hover .certs-ticker-track,
-.certs-ticker-track:hover {
+.certs-ticker-track.is-paused {
   animation-play-state: paused;
 }
 
@@ -2565,6 +2593,34 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   width: 290px;
   min-width: 290px;
   max-width: 290px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* Running Race Timing Cards Ticker */
+.running-ticker-wrapper {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+.running-lane-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.lane-scroll-running {
+  animation: tickerScrollLeft 38s linear infinite;
+}
+
+.ticker-run-card {
+  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  flex-shrink: 0;
   box-sizing: border-box;
 }
 
