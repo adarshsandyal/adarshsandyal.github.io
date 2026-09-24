@@ -110,7 +110,14 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 
 .gradient-text {
-  background: var(--gradient-main);
+  background: linear-gradient(180deg, #ffffff 15%, #e4e4e7 65%, #d4d4d8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="light"] .gradient-text {
+  background: linear-gradient(180deg, #09090b 15%, #27272a 65%, #3f3f46 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -122,7 +129,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 .section-header {
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 50px;
 }
 
 .section-tag {
@@ -160,8 +167,8 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .section-desc {
   color: var(--text-secondary);
   font-size: 1.05rem;
-  max-width: 540px;
-  margin: 16px auto 0;
+  max-width: 580px;
+  margin: 14px auto 0;
 }
 
 /* ---- Buttons ---- */
@@ -181,25 +188,40 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .btn svg { width: 18px; height: 18px; }
 
 .btn-primary {
-  background: var(--gradient-main);
-  color: white;
-  box-shadow: 0 4px 24px rgba(41, 181, 232, 0.35);
+  background: #ffffff;
+  color: #09090b;
+  border: 1px solid #ffffff;
+  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.12);
 }
 
 .btn-primary::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%);
   opacity: 0;
   transition: var(--transition);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(255, 54, 33, 0.45);
+  background: #f4f4f5;
+  color: #09090b;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.22);
 }
 .btn-primary:hover::before { opacity: 1; }
+
+[data-theme="light"] .btn-primary {
+  background: #09090b;
+  color: #ffffff;
+  border-color: #09090b;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .btn-primary:hover {
+  background: #18181b;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
 
 .btn-outline {
   border: 1.5px solid var(--border-glow);
@@ -291,18 +313,32 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 .nav-cta {
   padding: 8px 20px;
-  background: var(--gradient-main);
-  color: white;
+  background: #ffffff;
+  color: #09090b;
   font-size: 0.88rem;
   font-weight: 600;
   border-radius: var(--radius-sm);
   transition: var(--transition);
-  box-shadow: 0 2px 14px rgba(255, 54, 33, 0.3);
+  border: 1px solid #ffffff;
+  box-shadow: 0 2px 12px rgba(255, 255, 255, 0.15);
 }
 
 .nav-cta:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(255, 54, 33, 0.5);
+  background: #f4f4f5;
+  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.22);
+}
+
+[data-theme="light"] .nav-cta {
+  background: #09090b;
+  color: #ffffff;
+  border-color: #09090b;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .nav-cta:hover {
+  background: #18181b;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
 }
 
 .nav-actions {
@@ -559,7 +595,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .stat-item:hover {
   border-color: var(--border-glow);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(41, 181, 232, 0.2);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.08);
 }
 
 .stat-top {
@@ -938,7 +974,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   border: 1px solid var(--border-color);
 }
 
-.glass-btn-hire {
+.glass-btn-cv {
   background: #ffffff;
   color: #09090b;
   font-weight: 700;
@@ -946,23 +982,48 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15);
 }
 
-.glass-btn-hire:hover {
+.glass-btn-cv:hover {
   background: #e4e4e7;
   color: #000000;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
 }
 
-[data-theme="light"] .glass-btn-hire {
+[data-theme="light"] .glass-btn-cv {
   background: #09090b;
   color: #ffffff;
   border-color: #09090b;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
-[data-theme="light"] .glass-btn-hire:hover {
+[data-theme="light"] .glass-btn-cv:hover {
   background: #27272a;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.glass-btn-hire {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+  backdrop-filter: blur(10px);
+}
+
+.glass-btn-hire:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+[data-theme="light"] .glass-btn-hire {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #09090b;
+}
+
+[data-theme="light"] .glass-btn-hire:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.3);
 }
 
 .glass-btn-copy {
@@ -1718,8 +1779,8 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   position: relative;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-xl);
-  padding: 28px;
+  border-radius: var(--radius-lg);
+  padding: 18px 24px;
   transition: var(--transition);
   box-shadow: var(--shadow-card);
 }
@@ -1727,43 +1788,43 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .map-node:hover {
   border-color: var(--border-glow);
   transform: translateY(-2px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
 }
 
 .map-node.is-current {
   border-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 0 24px rgba(255, 255, 255, 0.08), var(--shadow-card);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.08), var(--shadow-card);
 }
 
 [data-theme="light"] .map-node.is-current {
   border-color: rgba(0, 0, 0, 0.25);
-  box-shadow: 0 0 24px rgba(0, 0, 0, 0.06), var(--shadow-card);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.06), var(--shadow-card);
 }
 
 .map-node-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 16px;
-  margin-bottom: 12px;
+  gap: 12px;
+  margin-bottom: 8px;
   flex-wrap: wrap;
 }
 
 .map-station-indicator {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .station-pin {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -1774,7 +1835,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   background: #ffffff;
   color: #09090b;
   border-color: #ffffff;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 [data-theme="light"] .map-node.is-current .station-pin {
@@ -1785,7 +1846,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 .station-type {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-muted);
@@ -1796,47 +1857,47 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   align-items: center;
   gap: 6px;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 700;
   color: #10b981;
   background: rgba(16, 185, 129, 0.1);
   border: 1px solid rgba(16, 185, 129, 0.3);
-  padding: 2px 8px;
+  padding: 1px 7px;
   border-radius: 100px;
 }
 
 .station-status-live::before {
   content: '';
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: #10b981;
   animation: livePulse 2s ease-in-out infinite;
 }
 
 .map-period-badge {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-family: var(--font-mono);
   color: var(--text-primary);
   background: var(--bg-secondary);
-  padding: 5px 12px;
+  padding: 3px 10px;
   border-radius: 100px;
   border: 1px solid var(--border-color);
   white-space: nowrap;
 }
 
 .map-node-role {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .map-node-company {
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   color: var(--text-secondary);
   font-weight: 500;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 /* Route transition arrows connecting stations */
@@ -1844,13 +1905,13 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px 0;
-  gap: 6px;
+  padding: 8px 0;
+  gap: 4px;
 }
 
 .route-line {
   width: 2px;
-  height: 22px;
+  height: 14px;
   background: linear-gradient(to bottom, var(--border-color), rgba(255, 255, 255, 0.4), var(--border-color));
 }
 
@@ -1862,35 +1923,35 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 18px;
+  padding: 4px 14px;
   border-radius: 100px;
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-family: var(--font-mono);
   background: var(--bg-card);
   border: 1px dashed var(--border-color);
   color: var(--text-secondary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   text-align: center;
 }
 
 .route-arrow-icon {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   color: var(--text-primary);
 }
 
 .timeline-bullets {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 5px;
+  margin-bottom: 12px;
 }
 
 .timeline-bullets li {
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   color: var(--text-secondary);
-  padding-left: 16px;
+  padding-left: 14px;
   position: relative;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .timeline-bullets li::before {
@@ -1898,8 +1959,18 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   position: absolute;
   left: 0;
   color: var(--text-muted);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   top: 2px;
+}
+
+.ticker-controls-center {
+  justify-content: center;
+  margin: 16px auto 0;
+}
+
+.hobbies-ctrl-center {
+  justify-content: center;
+  margin: 16px auto 0;
 }
 
 .timeline-tags {

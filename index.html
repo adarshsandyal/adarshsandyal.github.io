@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=3.1" />
+  <link rel="stylesheet" href="style.css?v=3.2" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23080b14%22/><text x=%2250%22 y=%2265%22 font-family=%22sans-serif%22 font-size=%2250%22 font-weight=%22bold%22 text-anchor=%22middle%22 fill=%22%23f1f5f9%22>AS</text><circle cx=%2280%22 cy=%2265%22 r=%226%22 fill=%22%2306b6d4%22/></svg>">
   <script>
     (function() {
@@ -188,14 +188,14 @@
             </div>
 
             <div class="glass-action-grid">
+              <a href="Adarsh_Sandyal_CV.pdf" download="Adarsh_Sandyal_CV.pdf" class="glass-btn glass-btn-cv" id="heroDownloadCvBtn" title="Download CV">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download CV</span>
+              </a>
               <a href="#contact" class="glass-btn glass-btn-hire">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 <span>Hire Me</span>
               </a>
-              <button class="glass-btn glass-btn-copy" id="heroCopyEmailBtn" type="button" aria-label="Copy Email">
-                <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                <span id="heroCopyBtnLabel">Copy Email</span>
-              </button>
             </div>
           </div>
 
@@ -344,13 +344,11 @@
   <!-- ======= SKILLS ======= -->
   <section id="skills" class="section skills">
     <div class="container">
-      <div class="section-header-flex">
-        <div class="section-header">
-          <span class="section-tag"><span class="tag-keyword">SELECT</span> tech_stack</span>
-          <h2 class="section-title">Skills &amp; <span class="gradient-text">Tech Stack</span></h2>
-          <p class="section-desc">Production technologies, tools, and analytical frameworks across end-to-end data pipelines</p>
-        </div>
-        <div class="ticker-controls">
+      <div class="section-header">
+        <span class="section-tag"><span class="tag-keyword">SELECT</span> tech_stack</span>
+        <h2 class="section-title">Skills &amp; <span class="gradient-text">Tech Stack</span></h2>
+        <p class="section-desc">Production technologies, tools, and analytical frameworks across end-to-end data pipelines</p>
+        <div class="ticker-controls ticker-controls-center">
           <button class="ticker-btn" id="skillsTickerPrev" aria-label="Previous Skills" title="Previous">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
           </button>
@@ -594,23 +592,25 @@
       <!-- Experience Career Map -->
       <div class="experience-map">
 
-        <!-- MAP STATION 1 -->
-        <div class="map-node" id="expStation1">
+        <!-- MAP STATION 1: CURRENT WORK FIRST -->
+        <div class="map-node is-current" id="expStation1">
           <div class="map-node-header">
             <div class="map-station-indicator">
               <span class="station-pin">01</span>
-              <span class="station-type">ORIGIN STATION · FOUNDATION</span>
+              <span class="station-type">CURRENT ROLE</span>
+              <span class="station-status-live">ACTIVE</span>
             </div>
-            <span class="map-period-badge">May 2021 - Apr 2023 · 2 Years</span>
+            <span class="map-period-badge">Jan 2026 - Present · Active</span>
           </div>
-          <h3 class="map-node-role">Data Analytics Tutor</h3>
-          <div class="map-node-company">Freelance · SQL, Python, Power BI, Tableau</div>
+          <h3 class="map-node-role">Business Analyst - Operations &amp; Excellence</h3>
+          <div class="map-node-company">Third Wave Coffee · Full-time</div>
           <ul class="timeline-bullets">
-            <li>Translated complex technical data concepts into clear, actionable insights for non-technical audiences: students and business owners.</li>
-            <li>Delivered one-on-one and group tutoring in <strong>Power BI, SQL, Excel, Tableau</strong> and data visualization tools.</li>
+            <li>Developed store-level <strong>'Pacesetter' model</strong> for ~200 retail cafes, setting monthly percentile targets to optimize regional sales tracking.</li>
+            <li>Engineered operational metrics during barista &amp; manager training, bridging ground realities with corporate data strategy.</li>
+            <li>Automated <strong>daily inventory &amp; resource allocation dashboards</strong> (SQL, Python), improving stock accuracy and rostering across high-volume cafes.</li>
           </ul>
           <div class="timeline-tags">
-            <span>Power BI</span><span>SQL</span><span>Excel</span><span>Tableau</span><span>Mentorship</span>
+            <span>SQL</span><span>Python</span><span>Operations</span><span>Dashboards</span><span>Retail Analytics</span><span>Pacesetter Model</span>
           </div>
         </div>
 
@@ -619,7 +619,7 @@
           <div class="route-line"></div>
           <div class="route-arrow-badge">
             <span class="route-arrow-icon">▼</span>
-            <span>2023 - 2024 · 1 Year Transition · Scaler Data Science &amp; ML Fellowship</span>
+            <span>2024 - 2026 · Previous Role · Supply Chain Scale &amp; Warehouse ETL</span>
             <span class="route-arrow-icon">▼</span>
           </div>
           <div class="route-line"></div>
@@ -630,19 +630,18 @@
           <div class="map-node-header">
             <div class="map-station-indicator">
               <span class="station-pin">02</span>
-              <span class="station-type">SCALE &amp; SUPPLY CHAIN WAYPOINT</span>
+              <span class="station-type">SUPPLY CHAIN &amp; WAREHOUSE SCALE</span>
             </div>
             <span class="map-period-badge">May 2024 - Jan 2026 · 1 Year 9 Months</span>
           </div>
           <h3 class="map-node-role">Business Analyst - Supply Chain Analytics &amp; Operations</h3>
           <div class="map-node-company">Swiggy Instamart · Full-time</div>
           <ul class="timeline-bullets">
-            <li>Built and optimized complex <strong>SQL &amp; SnowSQL queries</strong> for large-scale ETL (1M+ rows), ensuring data accuracy across critical business reports.</li>
-            <li>Optimized Inventory Health and Capacity Planning for FMCG categories using multi-source warehouse data pipelines.</li>
-            <li>Automated KPIs for Supply Chain metrics (Delivery TAT, Cost Per Delivery), directly improving last-mile efficiency.</li>
-            <li>Designed <strong>MoM/WoW trend reports</strong> that identified service gaps, leading to a <strong>10% improvement in customer retention</strong>.</li>
-            <li>Spearheaded Dispute Resolution &amp; Root Cause Analysis on inventory discrepancies, <strong>reducing data quality errors by 10%</strong>.</li>
-            <li>Integrated Python scripts to streamline reporting, reducing manual effort and enhancing data consistency.</li>
+            <li>Built &amp; optimized complex <strong>SQL &amp; SnowSQL queries</strong> for large-scale ETL (1M+ rows), ensuring data accuracy across business reports.</li>
+            <li>Optimized inventory health &amp; capacity planning for FMCG categories using multi-source warehouse data pipelines.</li>
+            <li>Automated delivery TAT &amp; cost metrics, directly enhancing last-mile fulfillment efficiency.</li>
+            <li>Designed MoM/WoW reports that flagged service gaps, driving a <strong>10% boost in customer retention</strong>.</li>
+            <li>Spearheaded root cause analysis on discrepancies, <strong>reducing data quality errors by 10%</strong>.</li>
           </ul>
           <div class="timeline-tags">
             <span>SQL</span><span>Snowflake</span><span>Python</span><span>ETL</span><span>Supply Chain</span><span>Databricks</span>
@@ -654,31 +653,29 @@
           <div class="route-line"></div>
           <div class="route-arrow-badge">
             <span class="route-arrow-icon">▼</span>
-            <span>Jan 2026 · Transition to Retail Operations Leadership &amp; Modeling</span>
+            <span>2021 - 2023 · Career Foundation · Data Analytics Mentorship &amp; Tutoring</span>
             <span class="route-arrow-icon">▼</span>
           </div>
           <div class="route-line"></div>
         </div>
 
         <!-- MAP STATION 3 -->
-        <div class="map-node is-current" id="expStation3">
+        <div class="map-node" id="expStation3">
           <div class="map-node-header">
             <div class="map-station-indicator">
               <span class="station-pin">03</span>
-              <span class="station-type">CURRENT DESTINATION</span>
-              <span class="station-status-live">ACTIVE</span>
+              <span class="station-type">CAREER FOUNDATION</span>
             </div>
-            <span class="map-period-badge">Jan 2026 - Present · Active</span>
+            <span class="map-period-badge">May 2021 - Apr 2023 · 2 Years</span>
           </div>
-          <h3 class="map-node-role">Business Analyst - Operations &amp; Excellence</h3>
-          <div class="map-node-company">Third Wave Coffee · Full-time</div>
+          <h3 class="map-node-role">Data Analytics Tutor</h3>
+          <div class="map-node-company">Freelance · SQL, Python, Power BI, Tableau</div>
           <ul class="timeline-bullets">
-            <li>Led development of a store-level <strong>'Pacesetter' performance model</strong> for ~200 retail outlets, establishing monthly percentile targets to optimize regional sales tracking.</li>
-            <li>Engineered store-level operational metrics during immersive barista &amp; inventory manager training to bridge field realities with corporate data strategy.</li>
-            <li>Designed and automated <strong>daily inventory &amp; resource allocation dashboards</strong> using SQL and Python, improving stock accuracy and streamlining staff rostering across multiple high-volume cafes.</li>
+            <li>Mentored students &amp; business owners in <strong>Power BI, SQL, Excel, and Tableau</strong>, translating complex data into actionable strategies.</li>
+            <li>Upskilled through intensive Data Science &amp; Machine Learning training at Scaler Academy.</li>
           </ul>
           <div class="timeline-tags">
-            <span>SQL</span><span>Python</span><span>Operations</span><span>Dashboards</span><span>Retail Analytics</span><span>Pacesetter Model</span>
+            <span>Power BI</span><span>SQL</span><span>Excel</span><span>Tableau</span><span>Mentorship</span>
           </div>
         </div>
 
@@ -689,13 +686,11 @@
   <!-- ======= PROJECTS ======= -->
   <section id="projects" class="section projects">
     <div class="container">
-      <div class="section-header-flex">
-        <div class="section-header">
-          <span class="section-tag"><span class="tag-keyword">PIPELINE</span> data_projects</span>
-          <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
-          <p class="section-desc">Interactive portfolio of end-to-end analytics, SQL modeling, and machine learning pipelines</p>
-        </div>
-        <div class="ticker-controls">
+      <div class="section-header">
+        <span class="section-tag"><span class="tag-keyword">PIPELINE</span> data_projects</span>
+        <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+        <p class="section-desc">Interactive portfolio of end-to-end analytics, SQL modeling, and machine learning pipelines</p>
+        <div class="ticker-controls ticker-controls-center">
           <button class="ticker-btn" id="projTickerPrev" aria-label="Previous Projects" title="Previous">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
           </button>
@@ -976,13 +971,11 @@
   <!-- ======= CERTIFICATIONS ======= -->
   <section id="certifications" class="section certifications">
     <div class="container">
-      <div class="section-header-flex">
-        <div class="section-header">
-          <span class="section-tag"><span class="tag-keyword">INDEX</span> verified_certs</span>
-          <h2 class="section-title">Licenses &amp; <span class="gradient-text">Certifications</span></h2>
-          <p class="section-desc">25+ certifications across SQL, Python, BI Tools, Cloud &amp; Data Analytics</p>
-        </div>
-        <div class="ticker-controls">
+      <div class="section-header">
+        <span class="section-tag"><span class="tag-keyword">INDEX</span> verified_certs</span>
+        <h2 class="section-title">Licenses &amp; <span class="gradient-text">Certifications</span></h2>
+        <p class="section-desc">25+ certifications across SQL, Python, BI Tools, Cloud &amp; Data Analytics</p>
+        <div class="ticker-controls ticker-controls-center">
           <button class="ticker-btn" id="certsTickerPrev" aria-label="Previous Certifications" title="Previous">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
           </button>
@@ -1372,13 +1365,11 @@
   <!-- ======= HOBBIES ======= -->
   <section id="hobbies" class="section hobbies">
     <div class="container">
-      <div class="section-header-flex">
-        <div class="section-header">
-          <span class="section-tag"><span class="tag-keyword">TELEMETRY</span> endurance_running</span>
-          <h2 class="section-title">Running &amp; <span class="gradient-text">Race Timings</span></h2>
-          <p class="section-desc">Passionate distance runner (5K &amp; 10K). When I'm not querying data, you'll find me on the tracks.</p>
-        </div>
-        <div class="hobbies-ctrl-row">
+      <div class="section-header">
+        <span class="section-tag"><span class="tag-keyword">TELEMETRY</span> endurance_running</span>
+        <h2 class="section-title">Running &amp; <span class="gradient-text">Race Timings</span></h2>
+        <p class="section-desc">Passionate distance runner (5K &amp; 10K). When I'm not querying data, you'll find me on the tracks.</p>
+        <div class="hobbies-ctrl-row hobbies-ctrl-center">
           <a href="https://www.strava.com/athletes/41339561" target="_blank" class="strava-pill-btn" id="stravaBtn">
             <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
             Follow on Strava
@@ -1621,6 +1612,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=3.1"></script>
+  <script src="script.js?v=3.2"></script>
 </body>
 </html>
