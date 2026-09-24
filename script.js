@@ -1,5 +1,5 @@
 /* =============================================
-   SCRIPT.JS — Portfolio Interactions & Animations
+   SCRIPT.JS - Portfolio Interactions & Animations
    ============================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================
-  // 5. INTERSECTION OBSERVER — Scroll Reveals
+  // 5. INTERSECTION OBSERVER - Scroll Reveals
   // ============================================
   const revealEls = document.querySelectorAll(
     '.skill-category, .timeline-card, .project-card, .highlight-card, .contact-card, .about-info-card, .edu-card'
@@ -669,5 +669,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial staged render (NO results table until Run Query is clicked!)
   renderEmptyState('impact');
+
+  // ============================================
+  // GLASSMORPHISM PROFILE CARD INTERACTIONS
+  // ============================================
+  const glassClockEl = document.getElementById('glassClockTime');
+  function updateGlassClock() {
+    if (!glassClockEl) return;
+    const now = new Date();
+    const h = now.getHours();
+    const m = now.getMinutes().toString().padStart(2, '0');
+    const hour12 = ((h + 11) % 12) + 1;
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    glassClockEl.textContent = `${hour12}:${m} ${ampm}`;
+  }
+  updateGlassClock();
+  setInterval(updateGlassClock, 60000);
+
+  const heroCopyBtn = document.getElementById('heroCopyEmailBtn');
+  const heroCopyLabel = document.getElementById('heroCopyBtnLabel');
+  if (heroCopyBtn) {
+    heroCopyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('adarshsandyal@gmail.com');
+        heroCopyBtn.classList.add('copied');
+        if (heroCopyLabel) heroCopyLabel.textContent = 'Copied!';
+        setTimeout(() => {
+          heroCopyBtn.classList.remove('copied');
+          if (heroCopyLabel) heroCopyLabel.textContent = 'Copy Email';
+        }, 1500);
+      } catch (err) {
+        const textarea = document.createElement('textarea');
+        textarea.value = 'adarshsandyal@gmail.com';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        heroCopyBtn.classList.add('copied');
+        if (heroCopyLabel) heroCopyLabel.textContent = 'Copied!';
+        setTimeout(() => {
+          heroCopyBtn.classList.remove('copied');
+          if (heroCopyLabel) heroCopyLabel.textContent = 'Copy Email';
+        }, 1500);
+      }
+    });
+  }
 
 });
