@@ -1704,97 +1704,178 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 
 /* ============================================
-   EXPERIENCE TIMELINE
+   EXPERIENCE CAREER JOURNEY MAP
    ============================================ */
 .experience { background: var(--bg-secondary); }
 
-.timeline {
-  position: relative;
-  max-width: 800px;
+.experience-map {
+  max-width: 840px;
   margin: 0 auto;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 20px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--accent-purple), var(--accent-cyan), transparent);
-  opacity: 0.4;
-}
-
-.timeline-item {
   position: relative;
-  padding-left: 64px;
-  margin-bottom: 40px;
-  animation: fadeInUp 0.5s ease both;
 }
 
-.timeline-dot {
-  position: absolute;
-  left: 12px;
-  top: 24px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--gradient-main);
-  border: 2px solid var(--bg-secondary);
-  box-shadow: 0 0 12px rgba(139,92,246,0.5);
-}
-
-.timeline-dot-edu {
-  background: linear-gradient(135deg, #06b6d4, #3b82f6);
-  box-shadow: 0 0 12px rgba(6,182,212,0.5);
-}
-
-.timeline-card {
+.map-node {
+  position: relative;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
   padding: 28px;
   transition: var(--transition);
-}
-
-.timeline-card:hover {
-  border-color: var(--border-glow);
   box-shadow: var(--shadow-card);
-  transform: translateX(4px);
 }
 
-.timeline-header {
+.map-node:hover {
+  border-color: var(--border-glow);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+}
+
+.map-node.is-current {
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.08), var(--shadow-card);
+}
+
+[data-theme="light"] .map-node.is-current {
+  border-color: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.06), var(--shadow-card);
+}
+
+.map-node-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
 }
 
-.timeline-role {
-  font-size: 1.05rem;
+.map-station-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.station-pin {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.map-node.is-current .station-pin {
+  background: #ffffff;
+  color: #09090b;
+  border-color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="light"] .map-node.is-current .station-pin {
+  background: #09090b;
+  color: #ffffff;
+  border-color: #09090b;
+}
+
+.station-type {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.station-status-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+.station-status-live::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+.map-period-badge {
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  padding: 5px 12px;
+  border-radius: 100px;
+  border: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.map-node-role {
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 4px;
 }
 
-.timeline-company {
-  display: block;
-  font-size: 0.85rem;
-  color: var(--accent-purple-light);
+.map-node-company {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
   font-weight: 500;
+  margin-bottom: 16px;
 }
 
-.timeline-date {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  white-space: nowrap;
-  background: var(--bg-secondary);
-  padding: 4px 10px;
+/* Route transition arrows connecting stations */
+.map-route-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+  gap: 6px;
+}
+
+.route-line {
+  width: 2px;
+  height: 22px;
+  background: linear-gradient(to bottom, var(--border-color), rgba(255, 255, 255, 0.4), var(--border-color));
+}
+
+[data-theme="light"] .route-line {
+  background: linear-gradient(to bottom, var(--border-color), rgba(0, 0, 0, 0.3), var(--border-color));
+}
+
+.route-arrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
   border-radius: 100px;
-  border: 1px solid var(--border-color);
-  flex-shrink: 0;
+  font-size: 0.74rem;
+  font-family: var(--font-mono);
+  background: var(--bg-card);
+  border: 1px dashed var(--border-color);
+  color: var(--text-secondary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.route-arrow-icon {
+  font-size: 0.72rem;
+  color: var(--text-primary);
 }
 
 .timeline-bullets {
@@ -1816,7 +1897,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   content: '▸';
   position: absolute;
   left: 0;
-  color: var(--accent-cyan);
+  color: var(--text-muted);
   font-size: 0.7rem;
   top: 2px;
 }
@@ -1832,9 +1913,15 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   font-family: var(--font-mono);
   padding: 3px 10px;
   border-radius: 100px;
-  background: rgba(139,92,246,0.1);
-  border: 1px solid rgba(139,92,246,0.25);
-  color: var(--accent-purple-light);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .timeline-tags span {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #09090b;
 }
 
 /* ============================================
@@ -2622,6 +2709,70 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   max-width: 300px;
   flex-shrink: 0;
   box-sizing: border-box;
+}
+
+/* Skills Ticker */
+.skills-ticker-wrapper {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+.skills-lane-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.lane-scroll-skills {
+  animation: tickerScrollLeft 48s linear infinite;
+}
+
+.ticker-skill-card {
+  width: 310px;
+  min-width: 310px;
+  max-width: 310px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* Compact Hobbies & Strava Button */
+.hobbies-ctrl-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.strava-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  background: rgba(252, 76, 2, 0.08);
+  border: 1px solid rgba(252, 76, 2, 0.35);
+  color: #fc4c02;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.strava-pill-btn:hover {
+  background: #fc4c02;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(252, 76, 2, 0.3);
+}
+
+[data-theme="light"] .strava-pill-btn {
+  background: rgba(252, 76, 2, 0.06);
+  border-color: rgba(252, 76, 2, 0.3);
+  color: #fc4c02;
 }
 
 .cert-card:hover {

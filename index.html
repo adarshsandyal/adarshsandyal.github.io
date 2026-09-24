@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=3.0" />
+  <link rel="stylesheet" href="style.css?v=3.1" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23080b14%22/><text x=%2250%22 y=%2265%22 font-family=%22sans-serif%22 font-size=%2250%22 font-weight=%22bold%22 text-anchor=%22middle%22 fill=%22%23f1f5f9%22>AS</text><circle cx=%2280%22 cy=%2265%22 r=%226%22 fill=%22%2306b6d4%22/></svg>">
   <script>
     (function() {
@@ -292,33 +292,7 @@
           <p>
             I'm now deepening my technical edge through a <strong>Data Science & Machine Learning program at Scaler</strong>, adding Python, ML algorithms, and statistical modeling to my toolkit - bridging the gap between business intuition and machine intelligence.
           </p>
-          <div class="about-highlights">
-            <div class="highlight-card">
-              <div class="highlight-icon">⚡</div>
-              <div>
-                <strong>Impact-Oriented</strong>
-                <p>10% retention boost & 10% fewer data errors at Swiggy Instamart</p>
-              </div>
-            </div>
-            <div class="highlight-card">
-              <div class="highlight-icon">🔗</div>
-              <div>
-                <strong>Bridge Builder</strong>
-                <p>I translate field realities into corporate data strategies</p>
-              </div>
-            </div>
-            <div class="highlight-card">
-              <div class="highlight-icon">🚀</div>
-              <div>
-                <strong>Continuous Learner</strong>
-                <p>Data Science & ML certification at Scaler (2023-2024)</p>
-              </div>
-            </div>
-          </div>
-          <div class="about-actions">
-            <a href="#contact" class="btn btn-primary" id="aboutContactBtn">Let's Connect</a>
-            <a href="mailto:adarshsandyal@gmail.com" class="btn btn-outline" id="emailBtn">adarshsandyal@gmail.com</a>
-          </div>
+
         </div>
         <div class="about-card-wrap">
           <div class="about-info-card">
@@ -370,117 +344,240 @@
   <!-- ======= SKILLS ======= -->
   <section id="skills" class="section skills">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag"><span class="tag-keyword">SELECT</span> tech_stack</span>
-        <h2 class="section-title">Skills & <span class="gradient-text">Tech Stack</span></h2>
+      <div class="section-header-flex">
+        <div class="section-header">
+          <span class="section-tag"><span class="tag-keyword">SELECT</span> tech_stack</span>
+          <h2 class="section-title">Skills &amp; <span class="gradient-text">Tech Stack</span></h2>
+          <p class="section-desc">Production technologies, tools, and analytical frameworks across end-to-end data pipelines</p>
+        </div>
+        <div class="ticker-controls">
+          <button class="ticker-btn" id="skillsTickerPrev" aria-label="Previous Skills" title="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="ticker-btn" id="skillsTickerToggle" aria-label="Pause or Resume Ticker" title="Pause / Resume">
+            <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="display:none;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+          <button class="ticker-btn" id="skillsTickerNext" aria-label="Next Skills" title="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
       </div>
-      <div class="skills-grid">
 
-        <div class="skill-category">
-          <div class="skill-cat-header">
-            <span class="skill-cat-icon">🐍</span>
-            <h3>Programming & Analytics</h3>
-          </div>
-          <div class="skill-tags">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">SQL / Snow SQL</span>
-            <span class="skill-tag">NumPy</span>
-            <span class="skill-tag">Pandas</span>
-            <span class="skill-tag">Matplotlib</span>
-            <span class="skill-tag">Seaborn</span>
-            <span class="skill-tag">PySpark</span>
-          </div>
-          <div class="skill-bars">
-            <div class="skill-bar-item">
-              <div class="skill-bar-label"><span>SQL</span><span>90%</span></div>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+      <!-- Skills Horizontal Ticker -->
+      <div class="skills-ticker-wrapper" id="skillsTickerWrapper">
+        <div class="ticker-fade ticker-fade-left"></div>
+        <div class="ticker-fade ticker-fade-right"></div>
+        
+        <div class="skills-lane-viewport" id="skillsTickerViewport">
+          <div class="certs-ticker-track lane-scroll-skills" id="skillsTickerTrack">
+
+            <!-- Skill Card 1 -->
+            <div class="cert-card cert-card-highlight ticker-cert-card ticker-skill-card" id="skillCard1">
+              <div class="cert-header">
+                <span class="cert-issuer-badge badge-python">PROGRAMMING</span>
+                <span class="cert-date">Advanced · 90%</span>
+              </div>
+              <h3 class="cert-name">🐍 Python &amp; PySpark</h3>
+              <p class="cert-id">NumPy · Pandas · Matplotlib · Seaborn</p>
+              <div class="skill-tags" style="margin-top: 4px;">
+                <span class="skill-tag">Pandas</span>
+                <span class="skill-tag">PySpark</span>
+                <span class="skill-tag">Data Wrangling</span>
+              </div>
             </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-label"><span>Python</span><span>80%</span></div>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+
+            <!-- Skill Card 2 -->
+            <div class="cert-card cert-card-highlight ticker-cert-card ticker-skill-card" id="skillCard2">
+              <div class="cert-header">
+                <span class="cert-issuer-badge badge-sql">DATABASE</span>
+                <span class="cert-date">Expert · 95%</span>
+              </div>
+              <h3 class="cert-name">❄️ SQL &amp; Snowflake</h3>
+              <p class="cert-id">SnowSQL · BigQuery · MySQL · Distributed DW</p>
+              <div class="skill-tags" style="margin-top: 4px;">
+                <span class="skill-tag">Complex CTEs</span>
+                <span class="skill-tag">Window Funcs</span>
+                <span class="skill-tag">1B+ Scale</span>
+              </div>
             </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-label"><span>PySpark</span><span>65%</span></div>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div>
+
+            <!-- Skill Card 3 -->
+            <div class="cert-card ticker-cert-card ticker-skill-card" id="skillCard3">
+              <div class="cert-header">
+                <span class="cert-issuer-badge badge-bi">BI &amp; VIZ</span>
+                <span class="cert-date">Advanced · 90%</span>
+              </div>
+              <h3 class="cert-name">📊 Power BI &amp; Tableau</h3>
+              <p class="cert-id">Interactive Dashboards &amp; Executive Storytelling</p>
+              <div class="skill-tags" style="margin-top: 4px;">
+                <span class="skill-tag">Power BI</span>
+                <span class="skill-tag">Tableau</span>
+                <span class="skill-tag">DAX / Modeling</span>
+              </div>
             </div>
+
+            <!-- Skill Card 4 -->
+            <div class="cert-card cert-card-highlight ticker-cert-card ticker-skill-card" id="skillCard4">
+              <div class="cert-header">
+                <span class="cert-issuer-badge badge-udemy">SPREADSHEET</span>
+                <span class="cert-date">Expert · 95%</span>
+              </div>
+              <h3 class="cert-name">📑 Advanced Excel &amp; Sheets</h3>
+              <p class="cert-id">VBA Macros · Power Query · Ops Modeling</p>
+              <div class="skill-tags" style="margin-top: 4px;">
+                <span class="skill-tag">VBA</span>
+                <span class="skill-tag">Power Query</span>
+                <span class="skill-tag">Financial Models</span>
+              </div>
+            </div>
+
+            <!-- Skill Card 5 -->
+            <div class="cert-card ticker-cert-card ticker-skill-card" id="skillCard5">
+              <div class="cert-header">
+                <span class="cert-issuer-badge badge-linkedin">DATA PLATFORMS</span>
+                <span class="cert-date">Proficient · 80%</span>
+              </div>
+              <h3 class="cert-name">🧱 Databricks &amp; Cloud ETL</h3>
+              <p class="cert-id">Lakehouse · Automated Pipelines · GitHub CI</p>
+              <div class="skill-tags" style="margin-top: 4px;">
+                <span class="skill-tag">Databricks</span>
+                <span class="skill-tag">BigQuery</span>
+                <span class="skill-tag">ETL Workflows</span>
+              </div>
+            </div>
+
+            <!-- Skill Card 6 -->
+            <div class="cert-card cert-card-highlight ticker-cert-card ticker-skill-card" id="skillCard6">
+              <div class="cert-header">
+                <span class="cert-issuer-badge badge-google">DATA SCIENCE</span>
+                <span class="cert-date">Practitioner · 75%</span>
+              </div>
+              <h3 class="cert-name">🤖 Machine Learning &amp; Stats</h3>
+              <p class="cert-id">Linear &amp; Logistic Reg · Scikit-Learn · EDA</p>
+              <div class="skill-tags" style="margin-top: 4px;">
+                <span class="skill-tag">Feature Eng</span>
+                <span class="skill-tag">Clustering</span>
+                <span class="skill-tag">Hypothesis Testing</span>
+              </div>
+            </div>
+
+            <!-- Skill Card 7 -->
+            <div class="cert-card ticker-cert-card ticker-skill-card" id="skillCard7">
+              <div class="cert-header">
+                <span class="cert-issuer-badge badge-forage">DOMAIN EXPERTISE</span>
+                <span class="cert-date">Domain Lead · 95%</span>
+              </div>
+              <h3 class="cert-name">📦 Supply Chain &amp; Retail Ops</h3>
+              <p class="cert-id">Inventory Health · TAT Optimization · SLA Audits</p>
+              <div class="skill-tags" style="margin-top: 4px;">
+                <span class="skill-tag">Capacity Plan</span>
+                <span class="skill-tag">Pacesetter Model</span>
+                <span class="skill-tag">RCA Discrepancy</span>
+              </div>
+            </div>
+
+            <!-- DUPLICATES FOR INFINITE LOOP (aria-hidden="true") -->
+            <div class="cert-card cert-card-highlight ticker-cert-card ticker-skill-card" aria-hidden="true">
+              <div class="cert-header">
+                <span class="cert-issuer-badge badge-python">PROGRAMMING</span>
+                <span class="cert-date">Advanced · 90%</span>
+              </div>
+              <h3 class="cert-name">🐍 Python &amp; PySpark</h3>
+              <p class="cert-id">NumPy · Pandas · Matplotlib · Seaborn</p>
+              <div class="skill-tags" style="margin-top: 4px;">
+                <span class="skill-tag">Pandas</span>
+                <span class="skill-tag">PySpark</span>
+                <span class="skill-tag">Data Wrangling</span>
+              </div>
+            </div>
+
+            <div class="cert-card cert-card-highlight ticker-cert-card ticker-skill-card" aria-hidden="true">
+              <div class="cert-header">
+                <span class="cert-issuer-badge badge-sql">DATABASE</span>
+                <span class="cert-date">Expert · 95%</span>
+              </div>
+              <h3 class="cert-name">❄️ SQL &amp; Snowflake</h3>
+              <p class="cert-id">SnowSQL · BigQuery · MySQL · Distributed DW</p>
+              <div class="skill-tags" style="margin-top: 4px;">
+                <span class="skill-tag">Complex CTEs</span>
+                <span class="skill-tag">Window Funcs</span>
+                <span class="skill-tag">1B+ Scale</span>
+              </div>
+            </div>
+
+            <div class="cert-card ticker-cert-card ticker-skill-card" aria-hidden="true">
+              <div class="cert-header">
+                <span class="cert-issuer-badge badge-bi">BI &amp; VIZ</span>
+                <span class="cert-date">Advanced · 90%</span>
+              </div>
+              <h3 class="cert-name">📊 Power BI &amp; Tableau</h3>
+              <p class="cert-id">Interactive Dashboards &amp; Executive Storytelling</p>
+              <div class="skill-tags" style="margin-top: 4px;">
+                <span class="skill-tag">Power BI</span>
+                <span class="skill-tag">Tableau</span>
+                <span class="skill-tag">DAX / Modeling</span>
+              </div>
+            </div>
+
+            <div class="cert-card cert-card-highlight ticker-cert-card ticker-skill-card" aria-hidden="true">
+              <div class="cert-header">
+                <span class="cert-issuer-badge badge-udemy">SPREADSHEET</span>
+                <span class="cert-date">Expert · 95%</span>
+              </div>
+              <h3 class="cert-name">📑 Advanced Excel &amp; Sheets</h3>
+              <p class="cert-id">VBA Macros · Power Query · Ops Modeling</p>
+              <div class="skill-tags" style="margin-top: 4px;">
+                <span class="skill-tag">VBA</span>
+                <span class="skill-tag">Power Query</span>
+                <span class="skill-tag">Financial Models</span>
+              </div>
+            </div>
+
+            <div class="cert-card ticker-cert-card ticker-skill-card" aria-hidden="true">
+              <div class="cert-header">
+                <span class="cert-issuer-badge badge-linkedin">DATA PLATFORMS</span>
+                <span class="cert-date">Proficient · 80%</span>
+              </div>
+              <h3 class="cert-name">🧱 Databricks &amp; Cloud ETL</h3>
+              <p class="cert-id">Lakehouse · Automated Pipelines · GitHub CI</p>
+              <div class="skill-tags" style="margin-top: 4px;">
+                <span class="skill-tag">Databricks</span>
+                <span class="skill-tag">BigQuery</span>
+                <span class="skill-tag">ETL Workflows</span>
+              </div>
+            </div>
+
+            <div class="cert-card cert-card-highlight ticker-cert-card ticker-skill-card" aria-hidden="true">
+              <div class="cert-header">
+                <span class="cert-issuer-badge badge-google">DATA SCIENCE</span>
+                <span class="cert-date">Practitioner · 75%</span>
+              </div>
+              <h3 class="cert-name">🤖 Machine Learning &amp; Stats</h3>
+              <p class="cert-id">Linear &amp; Logistic Reg · Scikit-Learn · EDA</p>
+              <div class="skill-tags" style="margin-top: 4px;">
+                <span class="skill-tag">Feature Eng</span>
+                <span class="skill-tag">Clustering</span>
+                <span class="skill-tag">Hypothesis Testing</span>
+              </div>
+            </div>
+
+            <div class="cert-card ticker-cert-card ticker-skill-card" aria-hidden="true">
+              <div class="cert-header">
+                <span class="cert-issuer-badge badge-forage">DOMAIN EXPERTISE</span>
+                <span class="cert-date">Domain Lead · 95%</span>
+              </div>
+              <h3 class="cert-name">📦 Supply Chain &amp; Retail Ops</h3>
+              <p class="cert-id">Inventory Health · TAT Optimization · SLA Audits</p>
+              <div class="skill-tags" style="margin-top: 4px;">
+                <span class="skill-tag">Capacity Plan</span>
+                <span class="skill-tag">Pacesetter Model</span>
+                <span class="skill-tag">RCA Discrepancy</span>
+              </div>
+            </div>
+
           </div>
         </div>
-
-        <div class="skill-category">
-          <div class="skill-cat-header">
-            <span class="skill-cat-icon">📊</span>
-            <h3>BI Tools & Visualization</h3>
-          </div>
-          <div class="skill-tags">
-            <span class="skill-tag">Power BI</span>
-            <span class="skill-tag">Tableau</span>
-            <span class="skill-tag">Advanced Excel</span>
-            <span class="skill-tag">Google Sheets</span>
-            <span class="skill-tag">VBA Macros</span>
-            <span class="skill-tag">Jupyter Notebook</span>
-          </div>
-          <div class="skill-bars">
-            <div class="skill-bar-item">
-              <div class="skill-bar-label"><span>Advanced Excel / Sheets</span><span>95%</span></div>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-label"><span>Power BI / Tableau</span><span>85%</span></div>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <div class="skill-cat-header">
-            <span class="skill-cat-icon">🗄️</span>
-            <h3>Databases & Cloud</h3>
-          </div>
-          <div class="skill-tags">
-            <span class="skill-tag">MySQL</span>
-            <span class="skill-tag">BigQuery</span>
-            <span class="skill-tag">Snowflake</span>
-            <span class="skill-tag">Databricks</span>
-            <span class="skill-tag">GitHub</span>
-            <span class="skill-tag">ETL Pipelines</span>
-          </div>
-          <div class="skill-bars">
-            <div class="skill-bar-item">
-              <div class="skill-bar-label"><span>MySQL / BigQuery</span><span>85%</span></div>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-label"><span>Snowflake / Databricks</span><span>75%</span></div>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <div class="skill-cat-header">
-            <span class="skill-cat-icon">🤖</span>
-            <h3>Machine Learning (Learning)</h3>
-          </div>
-          <div class="skill-tags">
-            <span class="skill-tag skill-tag-new">Linear Regression</span>
-            <span class="skill-tag skill-tag-new">Logistic Regression</span>
-            <span class="skill-tag skill-tag-new">Statistics & Probability</span>
-            <span class="skill-tag skill-tag-new">EDA</span>
-            <span class="skill-tag skill-tag-new">Feature Engineering</span>
-            <span class="skill-tag skill-tag-new">Customer Segmentation</span>
-          </div>
-          <div class="skill-bars">
-            <div class="skill-bar-item">
-              <div class="skill-bar-label"><span>Statistics & EDA</span><span>80%</span></div>
-              <div class="skill-bar-track"><div class="skill-bar-fill skill-bar-ai" data-width="80"></div></div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-label"><span>ML Algorithms</span><span>60%</span></div>
-              <div class="skill-bar-track"><div class="skill-bar-fill skill-bar-ai" data-width="60"></div></div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -489,73 +586,99 @@
   <section id="experience" class="section experience">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag"><span class="tag-keyword">TABLE</span> career_history</span>
+        <span class="section-tag"><span class="tag-keyword">ROUTE</span> career_journey_map</span>
         <h2 class="section-title">Work <span class="gradient-text">Experience</span></h2>
+        <p class="section-desc">Career trajectory roadmap with chronological milestones, transitions, and duration periods</p>
       </div>
-      <div class="timeline">
 
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-header">
-              <div>
-                <h3 class="timeline-role">Business Analyst - Operations & Excellence</h3>
-                <span class="timeline-company">Third Wave Coffee · Full-time</span>
-              </div>
-              <span class="timeline-date">Jan 2026 - Present</span>
+      <!-- Experience Career Map -->
+      <div class="experience-map">
+
+        <!-- MAP STATION 1 -->
+        <div class="map-node" id="expStation1">
+          <div class="map-node-header">
+            <div class="map-station-indicator">
+              <span class="station-pin">01</span>
+              <span class="station-type">ORIGIN STATION · FOUNDATION</span>
             </div>
-            <ul class="timeline-bullets">
-              <li>Led development of a store-level <strong>'Pacesetter' performance model</strong> for ~200 retail outlets, establishing monthly percentile targets to optimize regional sales tracking.</li>
-              <li>Engineered store-level operational metrics during immersive barista &amp; inventory manager training to bridge field realities with corporate data strategy.</li>
-              <li>Designed and automated <strong>daily inventory &amp; resource allocation dashboards</strong> using SQL and Python, improving stock accuracy and streamlining staff rostering across multiple high-volume cafes.</li>
-            </ul>
-            <div class="timeline-tags">
-              <span>SQL</span><span>Python</span><span>Operations</span><span>Dashboards</span><span>Retail Analytics</span>
-            </div>
+            <span class="map-period-badge">May 2021 - Apr 2023 · 2 Years</span>
+          </div>
+          <h3 class="map-node-role">Data Analytics Tutor</h3>
+          <div class="map-node-company">Freelance · SQL, Python, Power BI, Tableau</div>
+          <ul class="timeline-bullets">
+            <li>Translated complex technical data concepts into clear, actionable insights for non-technical audiences: students and business owners.</li>
+            <li>Delivered one-on-one and group tutoring in <strong>Power BI, SQL, Excel, Tableau</strong> and data visualization tools.</li>
+          </ul>
+          <div class="timeline-tags">
+            <span>Power BI</span><span>SQL</span><span>Excel</span><span>Tableau</span><span>Mentorship</span>
           </div>
         </div>
 
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-header">
-              <div>
-                <h3 class="timeline-role">Business Analyst - Supply Chain Analytics & Operations</h3>
-                <span class="timeline-company">Swiggy Instamart · Full-time</span>
-              </div>
-              <span class="timeline-date">May 2024 - Jan 2026</span>
+        <!-- ROUTE ARROW CONNECTOR 1 -->
+        <div class="map-route-connector">
+          <div class="route-line"></div>
+          <div class="route-arrow-badge">
+            <span class="route-arrow-icon">▼</span>
+            <span>2023 - 2024 · 1 Year Transition · Scaler Data Science &amp; ML Fellowship</span>
+            <span class="route-arrow-icon">▼</span>
+          </div>
+          <div class="route-line"></div>
+        </div>
+
+        <!-- MAP STATION 2 -->
+        <div class="map-node" id="expStation2">
+          <div class="map-node-header">
+            <div class="map-station-indicator">
+              <span class="station-pin">02</span>
+              <span class="station-type">SCALE &amp; SUPPLY CHAIN WAYPOINT</span>
             </div>
-            <ul class="timeline-bullets">
-              <li>Built and optimized complex <strong>SQL &amp; SnowSQL queries</strong> for large-scale ETL (1M+ rows), ensuring data accuracy across critical business reports.</li>
-              <li>Optimized Inventory Health and Capacity Planning for FMCG categories using multi-source warehouse data pipelines.</li>
-              <li>Automated KPIs for Supply Chain metrics (Delivery TAT, Cost Per Delivery), directly improving last-mile efficiency.</li>
-              <li>Designed <strong>MoM/WoW trend reports</strong> that identified service gaps, leading to a <strong>10% improvement in customer retention</strong>.</li>
-              <li>Spearheaded Dispute Resolution &amp; Root Cause Analysis on inventory discrepancies, <strong>reducing data quality errors by 10%</strong>.</li>
-              <li>Integrated Python scripts to streamline reporting, reducing manual effort and enhancing data consistency.</li>
-            </ul>
-            <div class="timeline-tags">
-              <span>SQL</span><span>Snowflake</span><span>Python</span><span>ETL</span><span>Supply Chain</span><span>Databricks</span>
-            </div>
+            <span class="map-period-badge">May 2024 - Jan 2026 · 1 Year 9 Months</span>
+          </div>
+          <h3 class="map-node-role">Business Analyst - Supply Chain Analytics &amp; Operations</h3>
+          <div class="map-node-company">Swiggy Instamart · Full-time</div>
+          <ul class="timeline-bullets">
+            <li>Built and optimized complex <strong>SQL &amp; SnowSQL queries</strong> for large-scale ETL (1M+ rows), ensuring data accuracy across critical business reports.</li>
+            <li>Optimized Inventory Health and Capacity Planning for FMCG categories using multi-source warehouse data pipelines.</li>
+            <li>Automated KPIs for Supply Chain metrics (Delivery TAT, Cost Per Delivery), directly improving last-mile efficiency.</li>
+            <li>Designed <strong>MoM/WoW trend reports</strong> that identified service gaps, leading to a <strong>10% improvement in customer retention</strong>.</li>
+            <li>Spearheaded Dispute Resolution &amp; Root Cause Analysis on inventory discrepancies, <strong>reducing data quality errors by 10%</strong>.</li>
+            <li>Integrated Python scripts to streamline reporting, reducing manual effort and enhancing data consistency.</li>
+          </ul>
+          <div class="timeline-tags">
+            <span>SQL</span><span>Snowflake</span><span>Python</span><span>ETL</span><span>Supply Chain</span><span>Databricks</span>
           </div>
         </div>
 
-        <div class="timeline-item">
-          <div class="timeline-dot timeline-dot-edu"></div>
-          <div class="timeline-card">
-            <div class="timeline-header">
-              <div>
-                <h3 class="timeline-role">Data Analytics Tutor</h3>
-                <span class="timeline-company">Freelance · SQL, Python, Power BI, Tableau</span>
-              </div>
-              <span class="timeline-date">May 2021 - Apr 2023</span>
+        <!-- ROUTE ARROW CONNECTOR 2 -->
+        <div class="map-route-connector">
+          <div class="route-line"></div>
+          <div class="route-arrow-badge">
+            <span class="route-arrow-icon">▼</span>
+            <span>Jan 2026 · Transition to Retail Operations Leadership &amp; Modeling</span>
+            <span class="route-arrow-icon">▼</span>
+          </div>
+          <div class="route-line"></div>
+        </div>
+
+        <!-- MAP STATION 3 -->
+        <div class="map-node is-current" id="expStation3">
+          <div class="map-node-header">
+            <div class="map-station-indicator">
+              <span class="station-pin">03</span>
+              <span class="station-type">CURRENT DESTINATION</span>
+              <span class="station-status-live">ACTIVE</span>
             </div>
-            <ul class="timeline-bullets">
-              <li>Translated complex technical data concepts into clear, actionable insights for non-technical audiences - students and business owners.</li>
-              <li>Delivered one-on-one and group tutoring in <strong>Power BI, SQL, Excel, Tableau</strong> and data visualization tools.</li>
-            </ul>
-            <div class="timeline-tags">
-              <span>Power BI</span><span>SQL</span><span>Excel</span><span>Tableau</span><span>Teaching</span>
-            </div>
+            <span class="map-period-badge">Jan 2026 - Present · Active</span>
+          </div>
+          <h3 class="map-node-role">Business Analyst - Operations &amp; Excellence</h3>
+          <div class="map-node-company">Third Wave Coffee · Full-time</div>
+          <ul class="timeline-bullets">
+            <li>Led development of a store-level <strong>'Pacesetter' performance model</strong> for ~200 retail outlets, establishing monthly percentile targets to optimize regional sales tracking.</li>
+            <li>Engineered store-level operational metrics during immersive barista &amp; inventory manager training to bridge field realities with corporate data strategy.</li>
+            <li>Designed and automated <strong>daily inventory &amp; resource allocation dashboards</strong> using SQL and Python, improving stock accuracy and streamlining staff rostering across multiple high-volume cafes.</li>
+          </ul>
+          <div class="timeline-tags">
+            <span>SQL</span><span>Python</span><span>Operations</span><span>Dashboards</span><span>Retail Analytics</span><span>Pacesetter Model</span>
           </div>
         </div>
 
@@ -853,10 +976,24 @@
   <!-- ======= CERTIFICATIONS ======= -->
   <section id="certifications" class="section certifications">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag"><span class="tag-keyword">INDEX</span> verified_certs</span>
-        <h2 class="section-title">Licenses & <span class="gradient-text">Certifications</span></h2>
-        <p class="section-desc">25+ certifications across SQL, Python, BI Tools, Cloud & Data Analytics</p>
+      <div class="section-header-flex">
+        <div class="section-header">
+          <span class="section-tag"><span class="tag-keyword">INDEX</span> verified_certs</span>
+          <h2 class="section-title">Licenses &amp; <span class="gradient-text">Certifications</span></h2>
+          <p class="section-desc">25+ certifications across SQL, Python, BI Tools, Cloud &amp; Data Analytics</p>
+        </div>
+        <div class="ticker-controls">
+          <button class="ticker-btn" id="certsTickerPrev" aria-label="Previous Certifications" title="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="ticker-btn" id="certsTickerToggle" aria-label="Pause or Resume Ticker" title="Pause / Resume">
+            <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="display:none;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+          <button class="ticker-btn" id="certsTickerNext" aria-label="Next Certifications" title="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
       </div>
 
       <!-- Filter Tabs -->
@@ -1235,33 +1372,37 @@
   <!-- ======= HOBBIES ======= -->
   <section id="hobbies" class="section hobbies">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag"><span class="tag-keyword">TELEMETRY</span> endurance_running</span>
-        <h2 class="section-title">My <span class="gradient-text">Hobbies</span></h2>
-        <p class="section-desc">When I'm not analyzing data, you can find me on the tracks.</p>
-      </div>
-      <div class="hobbies-content">
-        
-        <div class="hobby-card">
-          <div class="hobby-icon">🏃‍♂️</div>
-          <h3>Running & Fitness</h3>
-          <p>Passionate about running, tracking my pace, and continuously pushing my limits. From 5K & 10K races to everyday training - the road is my second office.</p>
-          <a href="https://www.strava.com/athletes/41339561" target="_blank" class="btn btn-outline" style="border-color: rgba(252,76,2,0.5); color: #fc4c02; margin-top: 10px;" id="stravaBtn">
-            <span style="display: flex; align-items: center; gap: 8px;">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
-              Follow on Strava
-            </span>
-          </a>
+      <div class="section-header-flex">
+        <div class="section-header">
+          <span class="section-tag"><span class="tag-keyword">TELEMETRY</span> endurance_running</span>
+          <h2 class="section-title">Running &amp; <span class="gradient-text">Race Timings</span></h2>
+          <p class="section-desc">Passionate distance runner (5K &amp; 10K). When I'm not querying data, you'll find me on the tracks.</p>
         </div>
+        <div class="hobbies-ctrl-row">
+          <a href="https://www.strava.com/athletes/41339561" target="_blank" class="strava-pill-btn" id="stravaBtn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
+            Follow on Strava
+          </a>
+          <div class="ticker-controls">
+            <button class="ticker-btn" id="runTickerPrev" aria-label="Previous Races" title="Previous">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="ticker-btn" id="runTickerToggle" aria-label="Pause or Resume Ticker" title="Pause / Resume">
+              <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="display:none;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+            <button class="ticker-btn" id="runTickerNext" aria-label="Next Races" title="Next">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
 
-        <div class="hobby-certificates">
-          <h3 style="text-align: center; margin-bottom: 24px; font-size: 1.2rem; font-family: var(--font-mono); color: var(--text-primary);">🏅 Race Timing Certificates</h3>
-          
-          <div class="running-ticker-wrapper" id="runningTickerWrapper">
-            <div class="ticker-fade ticker-fade-left"></div>
-            <div class="ticker-fade ticker-fade-right"></div>
+      <div class="running-ticker-wrapper" id="runningTickerWrapper">
+        <div class="ticker-fade ticker-fade-left"></div>
+        <div class="ticker-fade ticker-fade-right"></div>
             
-            <div class="running-lane-viewport">
+            <div class="running-lane-viewport" id="runningLaneViewport">
               <div class="certs-ticker-track lane-scroll-running" id="runningTrack">
 
                 <!-- Run 5 -->
@@ -1374,9 +1515,7 @@
             </div>
           </div>
         </div>
-
       </div>
-    </div>
   </section>
 
   <!-- ======= CONTACT ======= -->
@@ -1482,6 +1621,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=3.0"></script>
+  <script src="script.js?v=3.1"></script>
 </body>
 </html>

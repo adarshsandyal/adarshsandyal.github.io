@@ -715,37 +715,82 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================
-  // PROJECTS TICKER CONTROLS & INTERACTIONS
+  // UNIVERSAL TICKER CONTROLS & INTERACTIONS
   // ============================================
-  const projTrack = document.getElementById('projectsTickerTrack');
-  const projToggle = document.getElementById('projTickerToggle');
-  const projPrev = document.getElementById('projTickerPrev');
-  const projNext = document.getElementById('projTickerNext');
-  const projViewport = document.getElementById('projectsTickerViewport');
+  function setupTickerControls({ toggleId, prevId, nextId, trackSelector, viewportSelector, step = 340 }) {
+    const toggleBtn = document.getElementById(toggleId);
+    const prevBtn = document.getElementById(prevId);
+    const nextBtn = document.getElementById(nextId);
+    const viewports = document.querySelectorAll(viewportSelector);
 
-  if (projToggle && projTrack) {
-    const pauseIcon = projToggle.querySelector('.icon-pause');
-    const playIcon = projToggle.querySelector('.icon-play');
+    if (toggleBtn) {
+      const pauseIcon = toggleBtn.querySelector('.icon-pause');
+      const playIcon = toggleBtn.querySelector('.icon-play');
 
-    projToggle.addEventListener('click', () => {
-      const isPaused = projTrack.classList.toggle('is-paused');
-      if (pauseIcon && playIcon) {
-        pauseIcon.style.display = isPaused ? 'none' : 'block';
-        playIcon.style.display = isPaused ? 'block' : 'none';
-      }
-    });
+      toggleBtn.addEventListener('click', () => {
+        const tracks = document.querySelectorAll(trackSelector);
+        let anyPaused = false;
+        tracks.forEach(track => {
+          anyPaused = track.classList.toggle('is-paused');
+        });
+        if (pauseIcon && playIcon) {
+          pauseIcon.style.display = anyPaused ? 'none' : 'block';
+          playIcon.style.display = anyPaused ? 'block' : 'none';
+        }
+      });
+    }
+
+    if (prevBtn && viewports.length > 0) {
+      prevBtn.addEventListener('click', () => {
+        viewports.forEach(vp => vp.scrollBy({ left: -step, behavior: 'smooth' }));
+      });
+    }
+
+    if (nextBtn && viewports.length > 0) {
+      nextBtn.addEventListener('click', () => {
+        viewports.forEach(vp => vp.scrollBy({ left: step, behavior: 'smooth' }));
+      });
+    }
   }
 
-  if (projPrev && projViewport) {
-    projPrev.addEventListener('click', () => {
-      projViewport.scrollBy({ left: -380, behavior: 'smooth' });
-    });
-  }
+  // 1. Featured Projects Ticker
+  setupTickerControls({
+    toggleId: 'projTickerToggle',
+    prevId: 'projTickerPrev',
+    nextId: 'projTickerNext',
+    trackSelector: '#projectsTickerTrack',
+    viewportSelector: '#projectsTickerViewport',
+    step: 380
+  });
 
-  if (projNext && projViewport) {
-    projNext.addEventListener('click', () => {
-      projViewport.scrollBy({ left: 380, behavior: 'smooth' });
-    });
-  }
+  // 2. Skills & Tech Stack Ticker
+  setupTickerControls({
+    toggleId: 'skillsTickerToggle',
+    prevId: 'skillsTickerPrev',
+    nextId: 'skillsTickerNext',
+    trackSelector: '#skillsTickerTrack',
+    viewportSelector: '#skillsTickerViewport',
+    step: 330
+  });
+
+  // 3. Certifications Ticker (dual-lane)
+  setupTickerControls({
+    toggleId: 'certsTickerToggle',
+    prevId: 'certsTickerPrev',
+    nextId: 'certsTickerNext',
+    trackSelector: '.certs-ticker-track.lane-scroll-left, .certs-ticker-track.lane-scroll-right',
+    viewportSelector: '.certs-lane-viewport',
+    step: 310
+  });
+
+  // 4. Running Race Ticker
+  setupTickerControls({
+    toggleId: 'runTickerToggle',
+    prevId: 'runTickerPrev',
+    nextId: 'runTickerNext',
+    trackSelector: '#runningTrack',
+    viewportSelector: '#runningLaneViewport',
+    step: 320
+  });
 
 });
