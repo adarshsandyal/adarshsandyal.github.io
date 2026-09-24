@@ -84,22 +84,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const light = isLightTheme();
       if (this.isGlyph) {
         ctx.font = `600 ${this.size}px "JetBrains Mono", monospace`;
-        if (light) {
-          ctx.fillStyle = this.isFlame
-            ? `rgba(224, 40, 22, ${this.opacity * 0.45})`
-            : `rgba(2, 136, 209, ${this.opacity * 0.55})`;
-        } else {
-          ctx.fillStyle = this.isFlame
-            ? `rgba(255, 54, 33, ${this.opacity * 0.65})`
-            : `rgba(41, 181, 232, ${this.opacity * 0.7})`;
-        }
+        ctx.fillStyle = light
+          ? `rgba(9, 9, 11, ${this.opacity * 0.45})`
+          : `rgba(255, 255, 255, ${this.opacity * 0.55})`;
         ctx.fillText(this.glyph, this.x, this.y);
       } else {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fillStyle = light
-          ? `rgba(2, 136, 209, ${this.opacity * 0.5})`
-          : `rgba(41, 181, 232, ${this.opacity * 0.75})`;
+          ? `rgba(9, 9, 11, ${this.opacity * 0.35})`
+          : `rgba(255, 255, 255, ${this.opacity * 0.6})`;
         ctx.fill();
       }
     }
@@ -122,8 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (dist < 95) {
           ctx.beginPath();
           ctx.strokeStyle = light
-            ? `rgba(2, 136, 209, ${0.07 * (1 - dist / 95)})`
-            : `rgba(41, 181, 232, ${0.1 * (1 - dist / 95)})`;
+            ? `rgba(9, 9, 11, ${0.05 * (1 - dist / 95)})`
+            : `rgba(255, 255, 255, ${0.08 * (1 - dist / 95)})`;
           ctx.lineWidth = 0.5;
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
@@ -471,22 +465,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================
-  // 13. CERTIFICATIONS FILTER
+  // 13. CERTIFICATIONS FILTER (Ticker Highlight & Dim)
   // ============================================
   const filterBtns = document.querySelectorAll('.cert-filter-btn');
-  const certCards = document.querySelectorAll('.cert-card');
+  const certCards = document.querySelectorAll('.ticker-cert-card');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const filter = btn.getAttribute('data-filter');
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+
       certCards.forEach(card => {
         const cat = card.getAttribute('data-category');
-        if (filter === 'all' || cat === filter) {
-          card.classList.remove('hidden');
+        if (filter === 'all') {
+          card.classList.remove('filtered-dim', 'filtered-match');
+        } else if (cat === filter) {
+          card.classList.remove('filtered-dim');
+          card.classList.add('filtered-match');
         } else {
-          card.classList.add('hidden');
+          card.classList.add('filtered-dim');
+          card.classList.remove('filtered-match');
         }
       });
     });
@@ -712,6 +711,40 @@ document.addEventListener('DOMContentLoaded', () => {
           if (heroCopyLabel) heroCopyLabel.textContent = 'Copy Email';
         }, 1500);
       }
+    });
+  }
+
+  // ============================================
+  // PROJECTS TICKER CONTROLS & INTERACTIONS
+  // ============================================
+  const projTrack = document.getElementById('projectsTickerTrack');
+  const projToggle = document.getElementById('projTickerToggle');
+  const projPrev = document.getElementById('projTickerPrev');
+  const projNext = document.getElementById('projTickerNext');
+  const projViewport = document.getElementById('projectsTickerViewport');
+
+  if (projToggle && projTrack) {
+    const pauseIcon = projToggle.querySelector('.icon-pause');
+    const playIcon = projToggle.querySelector('.icon-play');
+
+    projToggle.addEventListener('click', () => {
+      const isPaused = projTrack.classList.toggle('is-paused');
+      if (pauseIcon && playIcon) {
+        pauseIcon.style.display = isPaused ? 'none' : 'block';
+        playIcon.style.display = isPaused ? 'block' : 'none';
+      }
+    });
+  }
+
+  if (projPrev && projViewport) {
+    projPrev.addEventListener('click', () => {
+      projViewport.scrollBy({ left: -380, behavior: 'smooth' });
+    });
+  }
+
+  if (projNext && projViewport) {
+    projNext.addEventListener('click', () => {
+      projViewport.scrollBy({ left: 380, behavior: 'smooth' });
     });
   }
 
