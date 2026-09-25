@@ -468,7 +468,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 13. CERTIFICATIONS FILTER (Ticker Highlight & Dim)
   // ============================================
   const filterBtns = document.querySelectorAll('.cert-filter-btn');
-  const certCards = document.querySelectorAll('.ticker-cert-card');
+  const certSection = document.getElementById('certifications');
+  const certCards = certSection ? certSection.querySelectorAll('.ticker-cert-card') : [];
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {

@@ -2862,22 +2862,27 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   border-color: rgba(0, 0, 0, 0.18);
 }
 
-/* Filter Dim/Match States */
-.ticker-cert-card.filtered-dim {
-  opacity: 0.18;
-  filter: grayscale(1);
-  transition: opacity 0.3s ease, filter 0.3s ease;
+/* Filter Dim/Match States - Scoped strictly to certifications */
+#certifications .ticker-cert-card.filtered-dim {
+  opacity: 0.35;
+  filter: grayscale(0.7);
+  transition: opacity 0.3s ease, filter 0.3s ease, border-color 0.3s ease;
 }
 
-.ticker-cert-card.filtered-match {
+[data-theme="light"] #certifications .ticker-cert-card.filtered-dim {
+  opacity: 0.42;
+  filter: grayscale(0.6);
+}
+
+#certifications .ticker-cert-card.filtered-match {
   opacity: 1;
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 0 16px rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.12);
 }
 
-[data-theme="light"] .ticker-cert-card.filtered-match {
-  border-color: rgba(0, 0, 0, 0.4);
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.08);
+[data-theme="light"] #certifications .ticker-cert-card.filtered-match {
+  border-color: rgba(0, 0, 0, 0.45);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.1);
 }
 
 .cert-header {
